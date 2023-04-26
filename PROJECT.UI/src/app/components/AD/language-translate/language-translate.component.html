@@ -1,0 +1,112 @@
+<div class="card">
+    <div class="card-header">{{'LANGUAGE_LIST_TITLE' | translate}}</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2" style="text-align:center;">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addLanguageTranslate"><i
+                class="bi bi-plus-lg"></i> {{'LANGUAGE_LIST_BUTTON_ADD' | translate}}</button>
+            </div>
+            <div class="col-md-4">
+                <input type="text" (keyup)="searchLanguageTranslate($event)" class="form-control" [placeholder]="['LANGUAGE_LIST_SEARCH' | translate]">
+            </div>
+        </div>
+                       
+        <table class="table table-hover" style="margin-top: 16px;" *ngIf="lstLanguageTranslateSearch && lstLanguageTranslateSearch.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">{{'LANGUAGE_LIST_CODE' | translate}}</th>
+                    <th scope="col">{{'LANGUAGE_LIST_TYPE' | translate}}</th>
+                    <th scope="col">{{'LANGUAGE_LIST_CONTENT' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstLanguageTranslateSearch | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" (click)="getDetailLanguageTranslate(item.ID)" data-bs-toggle="modal" data-bs-target="#editLanguageTranslate">
+                    <td>{{item.KEY}}</td>
+                    <td>{{item.LANGUAGE}}</td>
+                    <td>{{item.CONTENT}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="float: right;">
+            <ngb-pagination [pageSize]="pageSize" [collectionSize]="lstLanguageTranslateSearch.length" [(page)]="page" [maxSize]="5"
+                aria-label="Default pagination"></ngb-pagination>
+        </div>
+        <p *ngIf="!lstLanguageTranslateSearch|| lstLanguageTranslateSearch.length <= 0">{{'LANGUAGE_LIST_EMPTY' | translate}}</p>
+    </div>
+</div>
+
+<div class="modal fade" id="addLanguageTranslate" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="createLanguageTranslate()">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{'LANGUAGE_ADD_TITLE' | translate}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">{{'LANGUAGE_ADD_CODE' | translate}}</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="addItemRequest.KEY">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">{{'LANGUAGE_ADD_TYPE' | translate}}</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="LANGUAGE" [(ngModel)]="addItemRequest.LANGUAGE">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">{{'LANGUAGE_ADD_CONTENT' | translate}}</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CONTENT" [(ngModel)]="addItemRequest.CONTENT">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{'LANGUAGE_ADD_BUTTON_CLOSE' | translate}}</button>
+                    <button type="submit" class="btn btn-primary">{{'LANGUAGE_ADD_BUTTON_SUBMIT' | translate}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editLanguageTranslate" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="updateLanguageTranslate()">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{'LANGUAGE_EDIT_TITLE' | translate}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">{{'LANGUAGE_EDIT_CODE' | translate}}</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="itemDetail.KEY" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">{{'LANGUAGE_EDIT_TYPE' | translate}}</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="LANGUAGE" [(ngModel)]="itemDetail.LANGUAGE" disabled>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">{{'LANGUAGE_EDIT_CONTENT' | translate}}</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CONTENT" [(ngModel)]="itemDetail.CONTENT">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{'LANGUAGE_EDIT_BUTTON_CLOSE' | translate}}</button>
+                    <button type="submit" class="btn btn-primary">{{'LANGUAGE_EDIT_BUTTON_SUBMIT' | translate}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

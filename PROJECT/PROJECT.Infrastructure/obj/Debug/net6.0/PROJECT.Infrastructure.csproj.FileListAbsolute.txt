@@ -1,0 +1,17 @@
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\bin\Debug\net6.0\PROJECT.Infrastructure.deps.json
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\bin\Debug\net6.0\PROJECT.Infrastructure.runtimeconfig.json
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\bin\Debug\net6.0\PROJECT.Infrastructure.dll
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\bin\Debug\net6.0\PROJECT.Infrastructure.pdb
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\bin\Debug\net6.0\PROJECT.Core.dll
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\bin\Debug\net6.0\PROJECT.Core.pdb
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.AssemblyInfo.cs
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.csproj.CopyComplete
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.dll
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\refint\PROJECT.Infrastructure.dll
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.pdb
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.genruntimeconfig.cache
+C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\ref\PROJECT.Infrastructure.dll

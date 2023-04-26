@@ -1,0 +1,190 @@
+<div class="col-lg-12">
+    <div class="accordion" id="user-detail">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-user-information">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapse-user-information" aria-expanded="true" aria-controls="collapseOne">
+                    Thông tin chính
+                </button>
+            </h2>
+            <div id="collapse-user-information" class="accordion-collapse collapse show"
+                aria-labelledby="heading-user-information" data-bs-parent="#user-detail">
+                <div class="accordion-body" style="padding: 32px 22px;">
+                    <form class="row g-3" (ngSubmit)="updateUserGroup()">
+                        <div>
+                            <button type="submit" class="btn btn-success"><i class="bi bi-check2-all"></i> Cập nhật
+                                thông
+                                tin</button>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="CODE" class="form-label">Mã</label>
+                            <input type="text" class="form-control" id="CODE" name="CODE" disabled
+                                [(ngModel)]="userGroupDetail.CODE">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="NAME" class="form-label">Tên</label>
+                            <input type="text" class="form-control" id="NAME" name="NAME"
+                                [(ngModel)]="userGroupDetail.NAME">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="NOTES" class="form-label">Ghi chú</label>
+                            <input type="text" class="form-control" id="NOTES" name="NOTES"
+                                [(ngModel)]="userGroupDetail.NOTES">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-user-role">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapse-user-role" aria-expanded="false" aria-controls="collapse-user-role">
+                    Thuộc các nhóm quyền
+                </button>
+            </h2>
+            <div id="collapse-user-role" class="accordion-collapse collapse" aria-labelledby="heading-user-role"
+                data-bs-parent="#user-detail">
+                <div class="accordion-body">
+                    <button type="button" class="btn btn-success" (click)="getListUserGroupRoleForAdd()"
+                        data-bs-toggle="modal" data-bs-target="#listUserGroupRoleForAdd"><i
+                            class="bi bi-bookmark-plus"></i> Gán thêm nhóm quyền vào nhóm người dùng</button>
+                </div>
+                <div class="col-md-12">
+                    <table class="table table-hover" *ngIf="userGroupRole && userGroupRole.length > 0">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Mã</th>
+                                <th scope="col">Tên</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of userGroupRole">
+                                <td></td>
+                                <td>{{item.ROLE_CODE}}</td>
+                                <td>{{item?.Role?.NAME}}</td>
+                                <td>
+                                    <i class="bi bi-trash3" (click)="deleteRoleToUserGroup(item.USER_GROUP_CODE, item.ROLE_CODE)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-list-user">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapse-list-user" aria-expanded="false" aria-controls="collapse-list-user">
+                    Danh sách người dùng
+                </button>
+            </h2>
+            <div id="collapse-list-user" class="accordion-collapse collapse" aria-labelledby="heading-list-user"
+                data-bs-parent="#user-detail">
+                <div class="accordion-body">
+                    <button type="button" class="btn btn-primary" (click)="getListUserGroupRoleForAdd()"
+                        data-bs-toggle="modal" data-bs-target="#listUserForAdd"><i class="bi bi-person-plus-fill"></i>
+                         Thêm người dùng vào nhóm</button>
+                </div>
+                <div class="col-md-12">
+                    <table class="table table-hover" *ngIf="userOfGroup && userOfGroup.length > 0">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Họ tên</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of userOfGroup">
+                                <td></td>
+                                <td>{{item.USER_NAME}}</td>
+                                <td>{{item.FULL_NAME}}</td>
+                                <td>
+                                    <i class="bi bi-trash3" (click)="deleteUserToUserGroup( userGroupDetail.CODE, item.USER_NAME)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="listUserGroupRoleForAdd" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chỉnh sửa Khu vực</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover" *ngIf="userGroupRoleForAdd && userGroupRoleForAdd.length > 0">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Mã</th>
+                            <th scope="col">Tên</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of userGroupRoleForAdd">
+                            <td></td>
+                            <td>{{item.CODE}}</td>
+                            <td>{{item.NAME}}</td>
+                            <td>
+                                <i class="bi bi-plus-circle" (click)="addRoleToUserGroup(userGroupDetail.CODE, item.CODE)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="listUserForAdd" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chỉnh sửa Khu vực</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" (keyup)="searchUserForAdd($event)" placeholder="Tìm kiếm">
+                <table class="table table-hover" *ngIf="lstUserForAddFilter && lstUserForAddFilter.length > 0">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Họ tên</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of lstUserForAddFilter">
+                            <td></td>
+                            <td>{{item.USER_NAME}}</td>
+                            <td>{{item.FULL_NAME}}</td>
+                            <td>
+                                <i class="bi bi-plus-circle" (click)="addUserToUserGroup(userGroupDetail.CODE, item.USER_NAME)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-header">CẤU TRÚC TỔ CHỨC</div>
+    <div class="card-body">        
+        <a type="button" class="btn btn-danger" routerLink="/Organize"><i class="bi bi-box-arrow-left"></i> Thoát chế độ xem</a>
+        <div class="col-md-6">
+            <input type="text" (keyup)="searchOrganizeGrid($event)" class="form-control" placeholder="Tìm kiếm Công ty | Phòng ban"
+                aria-label="Tìm kiếm Công ty | Phòng ban" style="margin-top: 12px;">
+        </div>
+        <div style="margin: 12px 12px;">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- Gen Tree Organize CP -->
+            <ul id="treeOrganizeGrid" class="ztree"></ul>
+                </div>
+                <div class="col-md-8">
+                    <!-- Table BP -->
+                    <table class="table table-hover" id="table-organize">
+                        <thead>
+                          <tr>
+                            <th style="text-align: center;" scope="col">Tên đơn vị</th>
+                            <th style="text-align: center;" scope="col">Loại đơn vị</th>
+                            <th style="text-align: center;" scope="col">Company Code</th>
+                            <th style="text-align: center;" scope="col">Cost Center Code</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of dataTable">
+                            <td>{{item.NAME}}</td>
+                            <td style="text-align: center;" >{{item.TYPE == 'BP' ? 'BP - Bộ phận văn phòng' : 'CP - Công ty'}}</td>
+                            <td style="text-align: center;" >{{item.COMPANY_CODE}}</td>
+                            <td style="text-align: center;" >{{item.COST_CENTER_CODE}}</td>
+                          </tr>                        
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

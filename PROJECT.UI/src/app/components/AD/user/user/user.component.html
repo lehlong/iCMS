@@ -1,0 +1,122 @@
+<div class="card">
+    <div class="card-header">DANH SÁCH NGƯỜI DÙNG</div>
+    <div class="card-body">
+        <div class="row" style="margin-bottom: 20px;">
+            <div style="width: 14%;">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUser"><i
+                        class="bi bi-plus-lg"></i> Thêm mới</button>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" (keyup)="searchUser($event)"
+                    placeholder="Tìm kiếm theo tên đăng nhập hoặc họ tên">
+            </div>
+        </div>
+
+
+        <div style="margin: 12px 12px;">
+            <table class="table table-hover" id="table-user">
+                <thead>
+                    <tr>
+                        <th scope="col">Tên đăng nhập</th>
+                        <th scope="col">Chức vụ</th>
+                        <th scope="col">Đơn vị</th>
+                        <th scope="col">Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of dataUserSearch | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
+                        [routerLink]="['/User','UserDetail', item.USER_NAME]">
+                        <td><span style="font-weight: bold;">{{item.USER_NAME}}</span> ({{item.FULL_NAME}})</td>
+                        <td>{{getNameTitle(item.TITLE_CODE)}}</td>
+                        <td>{{getNameOrganize(item.COMPANY_ID)}}</td>
+                        <td>
+                            <span class="badge bg-success" *ngIf="item.ACTIVE == 'Y'"><i
+                                    class="bi bi-check-circle me-1"></i> Hoạt động</span>
+                            <span class="badge bg-danger" *ngIf="item.ACTIVE == 'N'"><i
+                                    class="bi bi-exclamation-octagon me-1"></i> Khoá</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="float: right;">
+                <ngb-pagination [pageSize]="pageSize" [collectionSize]="dataUserSearch.length" [(page)]="page" [maxSize]="5"
+                    aria-label="Default pagination"></ngb-pagination>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addUser" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="createUser()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm mới Người dùng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g3">
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Tên đăng nhập</label>
+                            <input type="text" class="form-control" name="USER_NAME"
+                                [(ngModel)]="requestForAdd.USER_NAME">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Kiểu người dùng</label>
+                            <input type="text" class="form-control" name="USER_TYPE"
+                                [(ngModel)]="requestForAdd.USER_TYPE">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Tài khoản AD</label>
+                            <input type="text" class="form-control" name="ACCOUNT_AD"
+                                [(ngModel)]="requestForAdd.ACCOUNT_AD">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Chức vụ</label>
+                            <ng-select [(ngModel)]="requestForAdd.TITLE_CODE" name="TITLE_CODE">
+                                <ng-option *ngFor="let item of dataTitle" [value]="item?.id">{{item?.name}}</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Họ và tên</label>
+                            <input type="text" class="form-control" name="FULL_NAME"
+                                [(ngModel)]="requestForAdd.FULL_NAME">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Nhà thầu</label>
+                            <ng-select [(ngModel)]="requestForAdd.VENDOR_CODE" name="VENDOR_CODE">
+                                <ng-option *ngFor="let item of dataVendor" [value]="item?.id">{{item?.name}}</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Email</label>
+                            <input type="text" class="form-control" name="EMAIL" [(ngModel)]="requestForAdd.EMAIL">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Công ty</label>
+                            <ng-select name="PARENT_COMPANY_ID">
+                                <ng-option *ngFor="let item of dataCP" [value]="item?.id">{{item.name}}</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Phòng ban</label>
+                            <ng-select name="COMPANY_ID" [(ngModel)]="requestForAdd.COMPANY_ID">
+                                <ng-option *ngFor="let item of dataBP" [value]="item?.id">{{item.name}}</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="form-label">Ghi chú</label>
+                            <input type="text" class="form-control" name="NOTES" [(ngModel)]="requestForAdd.NOTES">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Tạo mới</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

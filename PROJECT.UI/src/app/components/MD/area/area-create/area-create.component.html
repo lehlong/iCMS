@@ -1,0 +1,26 @@
+<form #form="ngForm" (ngSubmit)="createArea()">
+    <div class="modal-header">
+        <h5 class="modal-title">Thêm mới Khu vực</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="row mb-3">
+            <label for="" class="form-label">Mã Khu vực</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" name="CODE" [(ngModel)]="addItemRequest.CODE">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="" class="form-label">Tên Khu vực</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" name="NAME" [(ngModel)]="addItemRequest.NAME">
+            </div>
+        </div>
+       
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+    </div>
+</form>

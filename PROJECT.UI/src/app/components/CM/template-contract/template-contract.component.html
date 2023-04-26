@@ -1,0 +1,96 @@
+<div class="card">
+  <div class="card-header">File mẫu hợp đồng</div>
+  <div class="card-body">
+    <div class="row" style="margin-bottom:15px;">
+      <div class="col-md-3">
+        <input type="file" #file placeholder="Choose file" (change)="uploadFileTemplate(file.files)"
+          style="display:none;">
+        <button type="button" class="btn btn-success" (click)="file.click()"><i class="bi bi-upload"></i>  Add Template</button>
+      </div>
+
+      <table class="table table-hover" style="margin-top: 16px;" *ngIf="lstTemplate && lstTemplate.length > 0">
+        <thead>
+            <tr>
+              <th scope="col" style="width: 6%;"></th>
+                <th scope="col">Tên Template</th>
+                <th scope="col">Ngày tạo</th>
+                <th scope="col">Người tạo</th>
+                <th style="width: 2%;" scope="col"></th>
+                <th style="width: 2%;" scope="col"></th>
+                <th style="width: 2%;" scope="col"></th>
+                <th  scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of lstTemplate">
+              <td>
+                <img src="../assets/img/word.png" width="40%">
+              </td>
+                <td>{{item.FILE_OLD_NAME}}</td>
+                <td>{{item.CREATE_DATE}}</td>
+                <td>{{item.CREATE_BY}}</td>
+                <td>
+                  <a href={{item.PATH_FILE}} target="_blank" style="color: black;"><i class="bi bi-download"></i></a>
+                </td>
+                <td>
+                  <i class="bi bi-eye" (click)="onClickViewTemplate(item.PATH_FILE)" data-bs-toggle="modal" data-bs-target="#modal-view-file"></i>
+                </td>
+                <td>
+                  <i class="bi bi-pen" (click)="onClickEditTemplate(item.ID)" data-bs-toggle="modal" data-bs-target="#modal-edit-file"></i>
+                </td>
+                <td>
+                  <i class="bi bi-trash3"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal View File -->
+<div class="modal fade" id="modal-view-file" tabindex="-1">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">View File</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ngx-doc-viewer [url]="urlViewer" [viewer]="viewer" style="width:100%;height:100vh;"></ngx-doc-viewer>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit File -->
+<div class="modal fade" id="modal-edit-file" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">View File</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover" style="margin-top: 16px;">
+          <thead>
+              <tr>
+                  <th scope="col">Text Element</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of lstElement">
+                  <td>{{item.TEXT_ELEMENT}}</td>
+              </tr>
+          </tbody>
+      </table>   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="card">
+    <div class="card-header">CẤU TRÚC TỔ CHỨC</div>
+    <div class="card-body">
+        <button type="button" class="btn btn-primary" (click)="updateOrderTree()"><i class="bi bi-check-lg"></i> Cập
+            nhật thứ tự</button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createRight"><i
+                class="bi bi-plus-lg"></i> Thêm mới</button>
+        <div class="col-md-6">
+            <input type="text" (keyup)="searchRight($event)" class="form-control" placeholder="Tìm kiếm Công ty | Phòng ban"
+                aria-label="Tìm kiếm Công ty | Phòng ban" style="margin-top: 12px;">
+        </div>
+        <div style="margin: 12px 12px;">
+            <!-- Gen Tree Right -->
+            <ul id="treeRight" class="ztree"></ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editRight" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="updateRight()">
+                <div class="modal-header">
+                    <h5 class="modal-title">CHỈNH SỬA THÔNG TIN ĐƠN VỊ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" name="PKID" id="PKID" hidden>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã quyền</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" id="CODE" disabled>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên quyền</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME" id="NAME">
+                        </div>
+                    </div>
+                              
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="deleteRight()">Xoá</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createRight" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="createRight()" id="form-create-Right">
+                <div class="modal-header">
+                    <h5 class="modal-title">THÊM MỚI ĐƠN VỊ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã quyền</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE-CREATE" id="CODE-CREATE">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên quyền</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME-CREATE" id="NAME-CREATE">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Thêm mới</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

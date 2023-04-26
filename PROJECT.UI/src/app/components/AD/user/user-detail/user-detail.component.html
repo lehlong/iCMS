@@ -1,0 +1,188 @@
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title" style="padding: 4px 0 6px 0;">CHỈNH SỬA THÔNG TIN NGƯỜI DÙNG</h4>
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="infomation-tab" data-bs-toggle="tab"
+                        data-bs-target="#infomation" type="button" role="tab" aria-controls="infomation"
+                        aria-selected="true">Thông tin chính</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="user-group-tab" data-bs-toggle="tab" data-bs-target="#user-group"
+                        type="button" role="tab" aria-controls="user-group" aria-selected="false">DANH SÁCH NHÓM NGƯỜI DÙNG</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="right-tab" data-bs-toggle="tab" data-bs-target="#right" type="button"
+                        role="tab" aria-controls="right" aria-selected="false">CHỈNH SỬA QUYỀN</button>
+                </li>
+            </ul>
+            <div class="tab-content pt-2">
+                <div class="tab-pane fade show active" id="infomation" role="tabpanel" aria-labelledby="infomation-tab">
+
+                    <form class="row g-3" (ngSubmit)="updateUser()">
+                        <div style="margin: 32px 0px 0px;">
+                            <button type="submit" class="btn btn-success"><i class="bi bi-check2-all"></i> Cập nhật
+                                thông
+                                tin</button>
+                            <button type="button" class="btn btn-warning" (click)="resetPassword()"><i
+                                    class="bi bi-arrow-clockwise"></i> Reset
+                                mật
+                                khẩu</button>
+                            <button type="button" class="btn btn-danger" *ngIf="userDetail.ACTIVE == 'Y'"
+                                (click)="lockAccount()"><i class="bi bi-lock-fill"></i> Khoá tài
+                                khoản</button>
+                            <button type="button" class="btn btn-danger" *ngIf="userDetail.ACTIVE == 'N'"
+                                (click)="activeAccount()"><i class="bi bi-unlock-fill"></i> Mở tài
+                                khoản</button>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="FULL_NAME" class="form-label">Họ và tên</label>
+                            <input type="text" class="form-control" id="FULL_NAME" name="FULL_NAME"
+                                [(ngModel)]="userDetail.FULL_NAME">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="USER_NAME" class="form-label">Tên đăng nhập</label>
+                            <input type="text" class="form-control" id="USER_NAME" name="USER_NAME"
+                                [(ngModel)]="userDetail.USER_NAME" disabled>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="EMAIL" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="EMAIL" name="EMAIL"
+                                [(ngModel)]="userDetail.EMAIL">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="PHONE" class="form-label">Số điện thoại</label>
+                            <input type="text" class="form-control" id="PHONE" name="PHONE"
+                                [(ngModel)]="userDetail.PHONE">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="ACCOUNT_AD" class="form-label">Tài khoản AD Fecon</label>
+                            <input type="text" class="form-control" id="ACCOUNT_AD" name="ACCOUNT_AD"
+                                [(ngModel)]="userDetail.ACCOUNT_AD">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputCity" class="form-label">Kiểu người dùng</label>
+                            <input type="text" class="form-control" id="inputCity">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Chức vụ</label>
+                            <ng-select [(ngModel)]="userDetail.TITLE_CODE" name="TITLE_CODE">
+                                <ng-option *ngFor="let item of dataTitle" [value]="item?.id">{{item?.name}}</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Thầu phụ</label>
+                            <ng-select [(ngModel)]="userDetail.VENDOR_CODE" name="VENDOR_CODE">
+                                <ng-option *ngFor="let item of dataVendor" [value]="item?.id">{{item?.name}}</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Công ty</label>
+                            <ng-select [(ngModel)]="organizeId" name="PARENT_COMPANY_ID">
+                                <ng-option *ngFor="let item of dataCP" [value]="item?.id">{{item.name}}</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Phòng ban</label>
+                            <ng-select [(ngModel)]="userDetail.COMPANY_ID" name="COMPANY_ID">
+                                <ng-option *ngFor="let item of dataBP" [value]="item?.id">{{item.name}}</ng-option>
+                            </ng-select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="NOTES" class="form-label">Ghi chú</label>
+                            <input type="text" class="form-control" id="NOTES" name="NOTES"
+                                [(ngModel)]="userDetail.NOTES">
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="tab-pane fade" id="user-group" role="tabpanel" aria-labelledby="user-group-tab">
+                    <div style="margin: 16px 0px 0px;">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#listUserGroupForAdd" (click)="getListUserGroupForAdd()"><i
+                                class="bi bi-bookmark-plus"></i> Gán thêm nhóm người
+                            dùng</button>
+                    </div>
+                    <div class="col-md-12">
+                        <table class="table table-hover" *ngIf="lstUserGroup && lstUserGroup.length > 0">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Mã</th>
+                                    <th scope="col">Tên</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of lstUserGroup">
+                                    <td></td>
+                                    <td>{{item.CODE}}</td>
+                                    <td>{{item.NAME}}</td>
+                                    <td>
+                                        <i class="bi bi-trash3"
+                                            (click)="deleteUserGroup(userDetail.USER_NAME, item.CODE)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="right" role="tabpanel" aria-labelledby="right-tab">
+                    <div style="margin: 16px 0px 0px;">
+                        <button type="button" class="btn btn-success" (click)="updateRightUser()"><i
+                            class="bi bi-check2-all"></i> Cập nhật
+                        quyền</button>
+                    <button type="button" class="btn btn-warning" (click)="restoreDefaultRight()"><i
+                            class="bi bi-arrow-clockwise"></i> Lấy lại quyền
+                        mặc định</button>
+                    </div>
+                    
+
+                    <div class="col-md-6">
+                        <ul id="treeRight" class="ztree"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="listUserGroupForAdd" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chỉnh sửa Khu vực</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover" *ngIf="lstUserGroupForAdd && lstUserGroupForAdd.length > 0">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Mã</th>
+                            <th scope="col">Tên</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of lstUserGroupForAdd">
+                            <td></td>
+                            <td>{{item.CODE}}</td>
+                            <td>{{item.NAME}}</td>
+                            <td>
+                                <i class="bi bi-plus-circle"
+                                    (click)="addUserGroupToUser(userDetail.USER_NAME, item.CODE)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<div class="card">
+    <div class="card-header">Danh sách Project Profile</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2" style="text-align:center;">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProjectProfile"><i
+                class="bi bi-plus-lg"></i> Thêm mới</button>
+            </div>
+            <div class="col-md-4">
+                <input type="text" (keyup)="searchProjectProfile($event)" class="form-control" placeholder="Tìm kiếm theo Company Code | Project Profile | Project Type | First Character" aria-label="Tìm kiếm theo Company Code | Project Profile | Project Type | First Character">
+            </div>
+        </div>
+                       
+        <table class="table table-hover" style="margin-top: 16px;" *ngIf="lstProjectProfile && lstProjectProfile.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">Company Code</th>
+                    <th scope="col">Project Profile</th>
+                    <th scope="col">Project Type</th>
+                    <th scope="col">First Character</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstProjectProfile" (click)="getDetailProjectProfile(item.ID)" data-bs-toggle="modal" data-bs-target="#editProjectProfile">
+                    <td>{{item.COMPANY_CODE}}</td>
+                    <td>{{item.PROJECT_PROFILE}}</td>
+                    <td>{{item.PROJECT_TYPE}}</td>
+                    <td>{{item.FIRST_CHARACTER}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="!lstProjectProfile|| lstProjectProfile.length <= 0">Danh sách Project Profile đang trống!</p>
+    </div>
+</div>
+
+<div class="modal fade" id="addProjectProfile" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="createProjectProfile()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm mới Project Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Company Code</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="COMPANY_CODE" [(ngModel)]="addItemRequest.COMPANY_CODE">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Project Profile</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="PROJECT_PROFILE" [(ngModel)]="addItemRequest.PROJECT_PROFILE">
+                        </div>
+                    </div>  
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Project Type</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="PROJECT_TYPE" [(ngModel)]="addItemRequest.PROJECT_TYPE">
+                        </div>
+                    </div>  
+                    <div class="row mb-3">
+                        <label for="" class="form-label">First Character</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" maxlength="1" name="FIRST_CHARACTER" [(ngModel)]="addItemRequest.FIRST_CHARACTER">
+                        </div>
+                    </div>                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editProjectProfile" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="updateProjectProfile()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chỉnh sửa Project Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Company Code</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="COMPANY_CODE" [(ngModel)]="itemDetail.COMPANY_CODE">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Project Profile</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="PROJECT_PROFILE" [(ngModel)]="itemDetail.PROJECT_PROFILE">
+                        </div>
+                    </div>  
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Project Type</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="PROJECT_TYPE" [(ngModel)]="itemDetail.PROJECT_TYPE">
+                        </div>
+                    </div>  
+                    <div class="row mb-3">
+                        <label for="" class="form-label">First Character</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" maxlength="1" name="FIRST_CHARACTER" [(ngModel)]="itemDetail.FIRST_CHARACTER">
+                        </div>
+                    </div>  
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

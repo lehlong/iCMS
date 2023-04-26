@@ -1,0 +1,62 @@
+<div class="container" style="margin-top: -14vh;">
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                    <div class="card mb-3">
+                        <div class="card-body">
+
+                            <div class="pt-4 pb-2">
+                                <img src="../assets/img/Logo_iCMS.png" style="margin: 0px 34%;width: 32%;">
+                                <h5 class="card-title text-center pb-0 fs-4">{{'LOGIN_TITLE' | translate}}</h5>
+                                <p class="text-center small">{{'LOGIN_SUB_TITLE' | translate}}</p>
+                            </div>
+
+                            <form class="row g-3 needs-validation" (ngSubmit)="login()" novalidate>
+
+                                <div class="col-12">
+                                    <label for="yourUsername"  class="form-label">{{'LOGIN_USERNAME' | translate}}</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i
+                                                class="bi bi-person-fill"></i></span>
+                                        <input type="text" name="username" class="form-control" id="yourUsername" [(ngModel)]="loginRequest.username"
+                                            required>
+                                        <div class="invalid-feedback">{{'LOGIN_USERNAME_CHECK' | translate}}</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="yourPassword" class="form-label">{{'LOGIN_PASSWORD' | translate}}</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-key-fill"></i></span>
+                                        <input type="password" name="password" class="form-control" id="yourPassword" [(ngModel)]="loginRequest.password"
+                                            required>
+                                        <div class="invalid-feedback">{{'LOGIN_PASSWORD_CHECK' | translate}}</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="remember" value="true"
+                                            id="rememberMe">
+                                        <label class="form-check-label" for="rememberMe">{{'LOGIN_REMEMBER' | translate}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100" type="submit">{{'LOGIN_SUBMIT' | translate}}</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="credits"> Production by <a href="http://d2s.com.vn/" target="_blank">Dynamic Software Solution</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>

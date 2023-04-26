@@ -1,0 +1,179 @@
+<div class="card">
+    <div class="card-header">Danh sách Thầu phụ</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2" style="text-align:center;">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addVendor"><i
+                class="bi bi-plus-lg"></i> Thêm mới</button>
+            </div>
+            <div class="col-md-4">
+                <input type="text" (keyup)="searchVendor($event)" class="form-control" placeholder="Tìm kiếm theo Mã | Tên | Tên ngắn gọn | MST | Email | Phone" aria-label="Tìm kiếm theo Mã | Tên | SKF">
+            </div>
+        </div>
+                       
+        <table class="table table-hover" style="margin-top: 16px;" *ngIf="lstVendor && lstVendor.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">Mã</th>
+                    <th scope="col" style="width: 30%;">Tên</th>
+                    <th scope="col">Tên ngắn gọn</th>
+                    <th scope="col">Mã số thuế</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Địa chỉ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstVendor | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" (click)="getDetailVendor(item.CODE)" data-bs-toggle="modal" data-bs-target="#editVendor">
+                    <td>{{item.CODE}}</td>
+                    <td>{{item.NAME}}</td>
+                    <td>{{item.SHORT_NAME}}</td>
+                    <td>{{item.MST}}</td>
+                    <td>{{item.EMAIL}}</td>
+                    <td>{{item.PHONE}}</td>
+                    <td>{{item.ADDRESS}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="float: right;">
+            <ngb-pagination [pageSize]="pageSize" [collectionSize]="lstVendor.length" [(page)]="page" [maxSize]="5"
+                aria-label="Default pagination"></ngb-pagination>
+        </div>
+        <p *ngIf="!lstVendor|| lstVendor.length <= 0">Danh sách Thầu phụ đang trống!</p>
+    </div>
+</div>
+
+<div class="modal fade" id="addVendor" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="createVendor()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm mới Thầu phụ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã Thầu phụ</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="addItemRequest.CODE">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên Thầu phụ</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME" [(ngModel)]="addItemRequest.NAME">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên ngắn gọn</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="SHORT_NAME" [(ngModel)]="addItemRequest.SHORT_NAME">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã số thuế</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="MST" [(ngModel)]="addItemRequest.MST">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Email</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="EMAIL" [(ngModel)]="addItemRequest.EMAIL">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Số điện thoại</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="PHONE" [(ngModel)]="addItemRequest.PHONE">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Địa chỉ</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="ADDRESS" [(ngModel)]="addItemRequest.ADDRESS">
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editVendor" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="updateVendor()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chỉnh sửa Thầu phụ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã Thầu phụ</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="itemDetail.CODE" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên Thầu phụ</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME" [(ngModel)]="itemDetail.NAME">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên ngắn gọn</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="SHORT_NAME" [(ngModel)]="itemDetail.SHORT_NAME">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã số thuế</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="MST" [(ngModel)]="itemDetail.MST">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Email</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="EMAIL" [(ngModel)]="itemDetail.EMAIL">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Số điện thoại</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="PHONE" [(ngModel)]="itemDetail.PHONE">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Địa chỉ</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="ADDRESS" [(ngModel)]="itemDetail.ADDRESS">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

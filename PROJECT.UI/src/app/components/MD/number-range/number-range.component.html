@@ -1,0 +1,95 @@
+<div class="card">
+    <div class="card-header">Danh sách Number Range</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2" style="text-align:center;">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNumberRange"><i
+                class="bi bi-plus-lg"></i> Thêm mới</button>
+            </div>
+            <div class="col-md-4">
+                <input type="text" (keyup)="searchNumberRange($event)" class="form-control" placeholder="Tìm kiếm theo Character" aria-label="Tìm kiếm theo Character">
+            </div>
+        </div>
+                       
+        <table class="table table-hover" style="margin-top: 16px;" *ngIf="lstNumberRange && lstNumberRange.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">Character</th>
+                    <th scope="col">Current Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstNumberRange" (click)="getDetailNumberRange(item.ID)" data-bs-toggle="modal" data-bs-target="#editNumberRange">               
+                    <td>{{item.CHARACTER}}</td>
+                    <td>{{item.CURRENT_NUMBER}}</td>            
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="!lstNumberRange|| lstNumberRange.length <= 0">Danh sách Number Range đang trống!</p>
+    </div>
+</div>
+
+<div class="modal fade" id="addNumberRange" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="createNumberRange()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm mới Number Range</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Character</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" maxlength="1" name="CHARACTER" [(ngModel)]="addItemRequest.CHARACTER">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Current Number</label>
+                        <div class="col-sm-12">
+                            <input type="number" class="form-control" name="CURRENT_NUMBER" [(ngModel)]="addItemRequest.CURRENT_NUMBER">
+                        </div>
+                    </div>                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editNumberRange" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="updateNumberRange()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chỉnh sửa Number Range</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Character</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" maxlength="1" name="CODE" [(ngModel)]="itemDetail.CHARACTER">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Current Number</label>
+                        <div class="col-sm-12">
+                            <input type="number" class="form-control" name="NAME" [(ngModel)]="itemDetail.CURRENT_NUMBER">
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

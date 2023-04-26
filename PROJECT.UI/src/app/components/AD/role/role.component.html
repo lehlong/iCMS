@@ -1,0 +1,72 @@
+<div class="card">
+    <div class="card-header">Danh sách Chức danh</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2" style="text-align:center;">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addRole"><i
+                class="bi bi-plus-lg"></i> Thêm mới</button>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" (keyup)="searchRole($event)" placeholder="Tìm kiếm theo Mã | Tên" aria-label="Tìm kiếm theo Mã | Tên | SKF">
+            </div>
+        </div>
+                       
+        <table class="table table-hover" style="margin-top: 16px;" *ngIf="lstRole && lstRole.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">Mã</th>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Ghi chú</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstRole" [routerLink]="['/Role','Detail', item.CODE]">
+                    <td>{{item.CODE}}</td>
+                    <td>{{item.NAME}}</td>
+                    <td>{{item.NOTES}}</td>        
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="!lstRole|| lstRole.length <= 0">Danh sách Chức danh tính đang trống!</p>
+    </div>
+</div>
+
+<div class="modal fade" id="addRole" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="createRole()">
+                <div class="modal-header">
+                    <h5 class="modal-Role">Thêm mới Chức danh</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã </label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="addItemRequest.CODE">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên </label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME" [(ngModel)]="addItemRequest.NAME">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Ghi chú</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NOTES" [(ngModel)]="addItemRequest.NOTES">
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

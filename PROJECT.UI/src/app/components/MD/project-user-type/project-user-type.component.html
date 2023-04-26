@@ -1,0 +1,95 @@
+<div class="card">
+    <div class="card-header">Danh sách Nhóm nhân sự trong dự án</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2" style="text-align:center;">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProjectUserType"><i
+                class="bi bi-plus-lg"></i> Thêm mới</button>
+            </div>
+            <div class="col-md-4">
+                <input type="text" (keyup)="searchProjectUserType($event)" class="form-control" placeholder="Tìm kiếm theo Mã | Tên" aria-label="Tìm kiếm theo Mã | Tên | SKF">
+            </div>
+        </div>
+                       
+        <table class="table table-hover" style="margin-top: 16px;" *ngIf="lstProjectUserType && lstProjectUserType.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">Mã</th>
+                    <th scope="col">Tên</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstProjectUserType" (click)="getDetailProjectUserType(item.CODE)" data-bs-toggle="modal" data-bs-target="#editProjectUserType">
+                    <td>{{item.CODE}}</td>
+                    <td>{{item.NAME}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="!lstProjectUserType|| lstProjectUserType.length <= 0">Danh sách Nhóm nhân sự trong dự án tính đang trống!</p>
+    </div>
+</div>
+
+<div class="modal fade" id="addProjectUserType" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="createProjectUserType()">
+                <div class="modal-header">
+                    <h5 class="modal-ProjectUserType">Thêm mới Nhóm nhân sự trong dự án</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã Nhóm nhân sự trong dự án</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="addItemRequest.CODE">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên Nhóm nhân sự trong dự án</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME" [(ngModel)]="addItemRequest.NAME">
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editProjectUserType" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="updateProjectUserType()">
+                <div class="modal-header">
+                    <h5 class="modal-ProjectUserType">Chỉnh sửa Nhóm nhân sự trong dự án</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã Nhóm nhân sự trong dự án</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="itemDetail.CODE" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên Nhóm nhân sự trong dự án</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME" [(ngModel)]="itemDetail.NAME">
+                        </div>
+                    </div>                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

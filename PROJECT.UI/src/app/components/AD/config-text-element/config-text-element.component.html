@@ -1,0 +1,57 @@
+<div class="card">
+    <div class="card-header">Cấu hình Text Element</div>
+    <div class="card-body col-md-6">
+                
+        <table class="table table-hover" style="margin-top: 16px;">
+            <thead>
+                <tr>
+                    <th scope="col">Ký tự đầu</th>
+                    <th scope="col">Ký tự cuối</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-bs-toggle="modal" data-bs-target="#editConfigTextElement">
+                    <td>{{config.START_WORD}}</td>
+                    <td>{{config.END_WORD}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="editConfigTextElement" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="updateConfigTextElement()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chỉnh sửa </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="row mb-3 col-md-6">
+                        <label for="" class="form-label">Ký tự đầu</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="START_WORD" [(ngModel)]="config.START_WORD">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 col-md-6">
+                        <label for="" class="form-label">Ký tự cuối</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="END_WORD" [(ngModel)]="config.END_WORD">
+                        </div>
+                    </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

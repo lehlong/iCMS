@@ -1,0 +1,91 @@
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    height: 37.6px !important;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding: 3px 11px;
+}
+
+.accordion-item {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+#alert-message {
+    position: fixed;
+    top: 10%;
+    z-index: 10;
+    right: 1%;
+    max-width: 36%;
+}
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    cursor: pointer;
+}
+
+.pre {
+    position: fixed;
+    top: 50%;
+    left: 50%
+}
+
+.highlight {
+    background: #f6f9ff;
+    color: #4154f1 !important;
+}
+
+.form-control {
+    border-radius: 2px !important;
+}
+
+.page-item{
+    border-radius: 2px !important;
+}
+
+.input-group-text{
+    border-radius: 2px 0px 0px 2px !important;
+}
+
+.modal-content{
+    border-radius: 2px !important;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    border-radius: 2px !important;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-tabs .nav-item{
+    border-radius: 2px !important;
+    font-size: 14px;
+}
+.nav-tabs .nav-item :hover {
+    border-radius: 2px !important;
+}
+.page-item:last-child .page-link {
+    border-top-right-radius: 2px !important;
+    border-bottom-right-radius: 2px !important;
+}
+.page-item:first-child .page-link {
+    border-top-left-radius: 2px !important;
+    border-bottom-left-radius: 2px !important;
+}
+.badge{
+    border-radius: 2px !important;
+}

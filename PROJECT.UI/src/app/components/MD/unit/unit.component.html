@@ -1,0 +1,108 @@
+<div class="card" *ngIf="isUserAuthenticated()">
+    <div class="card-header">Danh sách Đơn vị tính</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2" style="text-align:center;">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUnit"><i
+                class="bi bi-plus-lg"></i> Thêm mới</button>
+            </div>
+            <div class="col-md-4">
+                <input type="text" (keyup)="searchUnit($event)" class="form-control" placeholder="Tìm kiếm theo Mã | Tên | SKF" aria-label="Tìm kiếm theo Mã | Tên | SKF">
+            </div>
+        </div>
+                       
+        <table class="table table-hover" style="margin-top: 16px;" *ngIf="lstUnit && lstUnit.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">Mã</th>
+                    <th scope="col">Tên</th>
+                    <th scope="col">SKF</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstUnit" (click)="getDetailUnit(item.CODE)" data-bs-toggle="modal" data-bs-target="#editUnit">
+                    <td>{{item.CODE}}</td>
+                    <td>{{item.NAME}}</td>
+                    <td>{{item.SKF}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="!lstUnit|| lstUnit.length <= 0">Danh sách Đơn vị tính đang trống!</p>
+    </div>
+</div>
+
+<div class="modal fade" id="addUnit" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="createUnit()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm mới Đơn vị tính</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã đơn vị tính</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="addItemRequest.CODE">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên đơn vị tính</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME" [(ngModel)]="addItemRequest.NAME">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">SKF</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="SKF" [(ngModel)]="addItemRequest.SKF">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editUnit" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="updateUnit()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chỉnh sửa Đơn vị tính</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã đơn vị tính</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="itemDetail.CODE" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên đơn vị tính</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME" [(ngModel)]="itemDetail.NAME">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">SKF</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="SKF" [(ngModel)]="itemDetail.SKF">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

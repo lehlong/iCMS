@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-header">CẤU TRÚC TỔ CHỨC</div>
+    <div class="card-body">
+        <div class="d-flex flex-row">
+            <div class="p-2">
+                <button type="button" class="btn btn-primary" (click)="updateOrderTree()"><i class="bi bi-check-lg"></i> Cập
+                    nhật thứ tự</button>
+            </div>
+            <div class="p-2">
+                <button type="button" class="btn btn-success" routerLink="/SystemManage/Organize/Create"><i class="bi bi-plus-lg"></i> Thêm mới</button>
+            </div>
+            <div class="p-2">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input type="text" class="form-control" (keyup)="searchOrganize($event)" placeholder="Tìm kiếm">
+                </div>
+            </div>
+        </div>
+
+        <!-- Gen Tree Organize -->
+        <ul id="treeOrganize" class="ztree"></ul>
+
+    </div>
+</div>

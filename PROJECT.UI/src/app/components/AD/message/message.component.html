@@ -1,0 +1,108 @@
+<div class="card">
+    <div class="card-header">Danh sách Message</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2" style="text-align:center;">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addMessage"><i
+                class="bi bi-plus-lg"></i> Thêm mới</button>
+            </div>
+            <div class="col-md-4">
+                <input type="text" (keyup)="searchMessage($event)" class="form-control" placeholder="Tìm kiếm theo Mã | Nội dung" aria-label="Tìm kiếm theo Mã | Tên | SKF">
+            </div>
+        </div>
+                       
+        <table class="table table-hover" style="margin-top: 16px;" *ngIf="lstMessage && lstMessage.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">Mã</th>
+                    <th scope="col">Ngôn ngữ</th>
+                    <th scope="col">Nội dung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstMessage" (click)="getDetailMessage(item.PKID)" data-bs-toggle="modal" data-bs-target="#editMessage">
+                    <td>{{item.CODE}}</td>
+                    <td>{{item.LANGUAGE}}</td>
+                    <td>{{item.MESSAGE}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="!lstMessage|| lstMessage.length <= 0">Danh sách Message đang trống!</p>
+    </div>
+</div>
+
+<div class="modal fade" id="addMessage" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="createMessage()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm mới Message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã Message</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="addItemRequest.CODE">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Ngôn ngữ</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="LANGUAGE" [(ngModel)]="addItemRequest.LANGUAGE">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Nội dung</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="MESSAGE" [(ngModel)]="addItemRequest.MESSAGE">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editMessage" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="updateMessage()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chỉnh sửa Message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã Message</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="itemDetail.CODE" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Ngôn ngữ</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="LANGUAGE" [(ngModel)]="itemDetail.LANGUAGE" disabled>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Nội dung</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="MESSAGE" [(ngModel)]="itemDetail.MESSAGE">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+1. Thêm PKID (uniqueidentifer) vào T_AD_USER_USER_GROUP
+2. Update random T_AD_USER_USER_GROUP.PKID
+3. Thêm PKID (uniqueidentifer) vào T_AD_USER_RIGHT
+4. Update random T_AD_USER_RIGHT.PKID
+5. Cập nhật icon, link,... T_AD_MENU

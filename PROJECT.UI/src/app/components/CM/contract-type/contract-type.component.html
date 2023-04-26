@@ -1,0 +1,95 @@
+<div class="card">
+    <div class="card-header">Danh sách Loại hợp đồng</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2" style="text-align:center;">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addContractType"><i
+                class="bi bi-plus-lg"></i> Thêm mới</button>
+            </div>
+            <div class="col-md-4">
+                <input type="text" (keyup)="searchContractType($event)" class="form-control" placeholder="Tìm kiếm theo Mã | Tên" aria-label="Tìm kiếm theo Mã | Tên | SKF">
+            </div>
+        </div>
+                       
+        <table class="table table-hover" style="margin-top: 16px;" *ngIf="lstContractTypeSearch && lstContractTypeSearch.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">Mã | Loại hợp đồng</th>
+                    <th scope="col">Tên</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstContractTypeSearch" (click)="getDetailContractType(item.CODE)" data-bs-toggle="modal" data-bs-target="#editContractType">
+                    <td>{{item.CODE}}</td>
+                    <td>{{item.NAME}}</td>                  
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="!lstContractTypeSearch|| lstContractTypeSearch.length <= 0">Danh sách Loại hợp đồng tính đang trống!</p>
+    </div>
+</div>
+
+<div class="modal fade" id="addContractType" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="createContractType()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm mới Loại hợp đồng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã Loại hợp đồng</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="addItemRequest.CODE">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên Loại hợp đồng</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME" [(ngModel)]="addItemRequest.NAME">
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editContractType" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="updateContractType()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chỉnh sửa Loại hợp đồng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã Loại hợp đồng</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="itemDetail.CODE" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên Loại hợp đồng</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME" [(ngModel)]="itemDetail.NAME">
+                        </div>
+                    </div>                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

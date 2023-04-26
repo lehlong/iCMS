@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header">Lịch sử đăng nhập</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">
+                <label class="form-label">Từ ngày</label>
+                <input type="date" class="form-control" [(ngModel)]="date.startDate" (change)="onChangeStartDate($event);">
+              </div>
+              <div class="col-md-2">
+                <label  class="form-label">Đến ngày</label>
+                <input type="date" class="form-control" [(ngModel)]="date.finishDate" (change)="onChangeFinishDate($event);">
+              </div>
+        </div>
+                       
+        <table class="table table-hover" style="margin-top: 16px;" *ngIf="lstHistoryLogin && lstHistoryLogin.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">Tài khoản</th>
+                    <th scope="col">Họ tên</th>
+                    <th scope="col">Thời gian đăng nhập</th>
+                    <th scope="col">Thiết bị</th>
+                    <th scope="col">Trình duyệt</th>
+                    <th scope="col">Địa chỉ IP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstHistoryLogin">
+                    <td>{{item.USER_NAME}}</td>
+                    <td>{{item.FULL_NAME}}</td>
+                    <td>{{item.LOGIN_TIME }}</td>
+                    <td>{{item.OS}}</td>
+                    <td>{{item.BROWSER}}</td>
+                    <td>{{item.IP_ADDRESS}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="!lstHistoryLogin|| lstHistoryLogin.length <= 0">Danh sách Lịch sử đăng nhập đang trống!</p>
+    </div>
+</div>

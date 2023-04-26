@@ -1,0 +1,151 @@
+<div class="card">
+    <div class="card-header">Danh sách Cấp dự án</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2" style="text-align:center;">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProjectLevel"><i
+                class="bi bi-plus-lg"></i> Thêm mới</button>
+            </div>
+            <div class="col-md-4">
+                <input type="text" (keyup)="searchProjectLevel($event)" class="form-control" placeholder="Tìm kiếm theo Mã | Tên" aria-label="Tìm kiếm theo Mã | Tên">
+            </div>
+        </div>
+                       
+        <table class="table table-hover" style="margin-top: 16px;" *ngIf="lstProjectLevel && lstProjectLevel.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">Mã</th>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Giá trị từ</th>
+                    <th scope="col">Giá trị đến</th>
+                    <th scope="col">Thời gian</th>
+                    <th scope="col" style="width: 32%;">Ghi chú</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstProjectLevel" (click)="getDetailProjectLevel(item.CODE)" data-bs-toggle="modal" data-bs-target="#editProjectLevel">
+                    <td>{{item.CODE}}</td>
+                    <td>{{item.NAME}}</td>
+                    <td>{{item.VALUE_FROM}}</td>
+                    <td>{{item.VALUE_TO}}</td>
+                    <td>{{item.THOI_GIAN}}</td>
+                    <td>{{item.NOTES}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="!lstProjectLevel|| lstProjectLevel.length <= 0">Danh sách Cấp dự án đang trống!</p>
+    </div>
+</div>
+
+<div class="modal fade" id="addProjectLevel" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="createProjectLevel()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm mới Cấp dự án</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã Cấp dự án</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="addItemRequest.CODE">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên Cấp dự án</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME" [(ngModel)]="addItemRequest.NAME">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Giá trị từ</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="VALUE_FROM" [(ngModel)]="addItemRequest.VALUE_FROM">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Giá trị đến</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="VALUE_TO" [(ngModel)]="addItemRequest.VALUE_TO">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Thời gian</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="THOI_GIAN" [(ngModel)]="addItemRequest.THOI_GIAN">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Ghi chú</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NOTES" [(ngModel)]="addItemRequest.NOTES">
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editProjectLevel" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #form="ngForm" (ngSubmit)="updateProjectLevel()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Chỉnh sửa Cấp dự án</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Mã Cấp dự án</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="CODE" [(ngModel)]="itemDetail.CODE" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Tên Cấp dự án</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NAME" [(ngModel)]="itemDetail.NAME">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Giá trị từ</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="VALUE_FROM" [(ngModel)]="itemDetail.VALUE_FROM">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Giá trị đến</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="VALUE_TO" [(ngModel)]="itemDetail.VALUE_TO">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Thời gian</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="THOI_GIAN" [(ngModel)]="itemDetail.THOI_GIAN">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="" class="form-label">Ghi chú</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="NOTES" [(ngModel)]="itemDetail.NOTES">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,318 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.API\\PROJECT.API.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.API\\PROJECT.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
+        "projectName": "PROJECT.API",
+        "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
+        "packagesPath": "C:\\Users\\hlonn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hlonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj": {
+                "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj"
+              },
+              "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Infrastructure\\PROJECT.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Infrastructure\\PROJECT.Infrastructure.csproj"
+              },
+              "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Services\\PROJECT.Services.csproj": {
+                "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Services\\PROJECT.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.20.0, )"
+            },
+            "JWT": {
+              "target": "Package",
+              "version": "[10.0.2, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Spire.Doc": {
+              "target": "Package",
+              "version": "[11.4.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.29.0, )"
+            },
+            "UAParser": {
+              "target": "Package",
+              "version": "[3.1.47, )"
+            },
+            "XAct.Core.PCL": {
+              "target": "Package",
+              "version": "[0.0.5014, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj",
+        "projectName": "PROJECT.Core",
+        "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj",
+        "packagesPath": "C:\\Users\\hlonn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hlonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Infrastructure\\PROJECT.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Infrastructure\\PROJECT.Infrastructure.csproj",
+        "projectName": "PROJECT.Infrastructure",
+        "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Infrastructure\\PROJECT.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\hlonn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hlonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj": {
+                "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "NHibernate": {
+              "target": "Package",
+              "version": "[5.4.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Services\\PROJECT.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Services\\PROJECT.Services.csproj",
+        "projectName": "PROJECT.Services",
+        "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Services\\PROJECT.Services.csproj",
+        "packagesPath": "C:\\Users\\hlonn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hlonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj": {
+                "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj"
+              },
+              "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Infrastructure\\PROJECT.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Infrastructure\\PROJECT.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
