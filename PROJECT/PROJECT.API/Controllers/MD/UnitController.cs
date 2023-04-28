@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PROJECT.API.Data;
-using PROJECT.API.Models;
-using PROJECT.API.Models.MD;
+using PROJECT.Core.Models.MD;
 using PROJECT.Services.Interfaces.MD;
 
 namespace PROJECT.API.Controllers.MD
@@ -13,7 +10,7 @@ namespace PROJECT.API.Controllers.MD
     [Route("api/[controller]")]
     public class UnitController : ControllerBase
     {
-        public readonly IUnitService _service;
+        public IUnitService _service { get; set; }
         public UnitController(IUnitService service)
         {
             _service = service;
@@ -21,14 +18,7 @@ namespace PROJECT.API.Controllers.MD
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> GetProductList()
-        {
-            var productDetailsList = await _service.GetAllUnits();
-            if (productDetailsList == null)
-            {
-                return NotFound();
-            }
-            return Ok(productDetailsList);
-        }
+        public async Task<IEnumerable<T_MD_UNIT>> GetAll()
+          => await _service.GetAll();
     }
 }

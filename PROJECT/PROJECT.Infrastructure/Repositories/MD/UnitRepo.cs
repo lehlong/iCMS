@@ -8,7 +8,6 @@ namespace PROJECT.Infrastructure.Repositories.MD
     {
         public UnitRepo(ApplicationDbContext dbContext) : base(dbContext)
         {
-
         }
     }
 }

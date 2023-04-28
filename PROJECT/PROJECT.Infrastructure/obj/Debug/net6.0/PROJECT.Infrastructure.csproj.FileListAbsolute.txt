@@ -15,3 +15,20 @@ C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\refint\PR
 C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.pdb
 C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.genruntimeconfig.cache
 C:\Users\hlonn\Desktop\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\ref\PROJECT.Infrastructure.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\bin\Debug\net6.0\PROJECT.Infrastructure.deps.json
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\bin\Debug\net6.0\PROJECT.Infrastructure.runtimeconfig.json
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\bin\Debug\net6.0\PROJECT.Infrastructure.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\bin\Debug\net6.0\PROJECT.Infrastructure.pdb
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\bin\Debug\net6.0\PROJECT.Core.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\bin\Debug\net6.0\PROJECT.Core.pdb
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.csproj.AssemblyReference.cache
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.AssemblyInfoInputs.cache
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.AssemblyInfo.cs
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.csproj.CoreCompileInputs.cache
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.csproj.CopyComplete
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\refint\PROJECT.Infrastructure.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.pdb
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\PROJECT.Infrastructure.genruntimeconfig.cache
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Infrastructure\obj\Debug\net6.0\ref\PROJECT.Infrastructure.dll

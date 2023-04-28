@@ -10,3 +10,15 @@ C:\Users\hlonn\Desktop\PROJECT\PROJECT.Core\obj\Debug\net6.0\PROJECT.Core.dll
 C:\Users\hlonn\Desktop\PROJECT\PROJECT.Core\obj\Debug\net6.0\refint\PROJECT.Core.dll
 C:\Users\hlonn\Desktop\PROJECT\PROJECT.Core\obj\Debug\net6.0\PROJECT.Core.pdb
 C:\Users\hlonn\Desktop\PROJECT\PROJECT.Core\obj\Debug\net6.0\ref\PROJECT.Core.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Core\bin\Debug\net6.0\PROJECT.Core.deps.json
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Core\bin\Debug\net6.0\PROJECT.Core.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Core\bin\Debug\net6.0\PROJECT.Core.pdb
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Core\obj\Debug\net6.0\PROJECT.Core.csproj.AssemblyReference.cache
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Core\obj\Debug\net6.0\PROJECT.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Core\obj\Debug\net6.0\PROJECT.Core.AssemblyInfoInputs.cache
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Core\obj\Debug\net6.0\PROJECT.Core.AssemblyInfo.cs
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Core\obj\Debug\net6.0\PROJECT.Core.csproj.CoreCompileInputs.cache
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Core\obj\Debug\net6.0\PROJECT.Core.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Core\obj\Debug\net6.0\refint\PROJECT.Core.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Core\obj\Debug\net6.0\PROJECT.Core.pdb
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Core\obj\Debug\net6.0\ref\PROJECT.Core.dll

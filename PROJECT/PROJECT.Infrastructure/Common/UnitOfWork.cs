@@ -1,37 +1,35 @@
-﻿using PROJECT.Infrastructure.Interfaces.MD;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore;
+using PROJECT.Infrastructure.Interfaces.MD;
+using PROJECT.Infrastructure.Repositories.MD;
 
 namespace PROJECT.Infrastructure.Common
 {
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _dbContext;
-        public IUnitRepo Unit { get; }
+        private IUnitRepo _unitRepo;
 
-        public UnitOfWork(ApplicationDbContext dbContext,
-                            IUnitRepo unitRepo)
+        public UnitOfWork(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
-            Unit = unitRepo;
         }
 
-        public int Save()
+        public IUnitRepo Unit
         {
-            return _dbContext.SaveChanges();
+            get { return _unitRepo = _unitRepo ?? new UnitRepo(_dbContext); }
         }
 
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+        public void Commit()
+            => _dbContext.SaveChanges();
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _dbContext.Dispose();
-            }
-        }
+        public async Task CommitAsync()
+            => await _dbContext.SaveChangesAsync();
 
+        public void Rollback()
+            => _dbContext.Dispose();
+
+        public async Task RollbackAsync()
+            => await _dbContext.DisposeAsync();
     }
 }

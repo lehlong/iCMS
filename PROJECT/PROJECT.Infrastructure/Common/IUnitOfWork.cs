@@ -3,11 +3,12 @@ using PROJECT.Infrastructure.Interfaces.MD;
 
 namespace PROJECT.Infrastructure.Common
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         IUnitRepo Unit { get; }
-
-
-        int Save();
+        void Commit();
+        void Rollback();
+        Task CommitAsync();
+        Task RollbackAsync();
     }
 }

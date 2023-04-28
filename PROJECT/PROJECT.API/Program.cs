@@ -1,24 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using PROJECT.API.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using ConfigurationManager = PROJECT.API.ConfigurationManager;
 using Microsoft.AspNetCore.Http.Features;
-using Microsoft.Extensions.FileProviders;
-using Microsoft.AspNetCore.Builder;
 using PROJECT.API.Hubs;
-using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
-using PROJECT.Services.Interfaces.MD;
+using PROJECT.Infrastructure.Common;
 using PROJECT.Services.Service.MD;
-using PROJECT.Infrastructure.ServiceExtension;
+using PROJECT.Services.Interfaces.MD;
+using Microsoft.EntityFrameworkCore;
+using PROJECT.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddDIServices(builder.Configuration);
-builder.Services.AddScoped<IUnitService, UnitService>();
 
 builder.Services.AddControllers();
 
@@ -91,6 +85,14 @@ builder.Services.AddCors(options => options.AddPolicy("CorsPolicy",
                    .SetIsOriginAllowed((host) => true)
                    .AllowCredentials();
         }));
+
+builder.Services.AddTransient(typeof(IUnitService), typeof(UnitService));
+
+//Database
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddDbContext<ApplicationDbContext>(
+               x => x.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
 
 var app = builder.Build();
 

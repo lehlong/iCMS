@@ -8104,19 +8104,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hlonn\\.nuget\\packages\\": {}
+    "C:\\Users\\LONGD2S\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
+      "projectUniqueName": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
       "projectName": "PROJECT.API",
-      "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
-      "packagesPath": "C:\\Users\\hlonn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.API\\obj\\",
+      "projectPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
+      "packagesPath": "C:\\Users\\LONGD2S\\.nuget\\packages\\",
+      "outputPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\hlonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LONGD2S\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8130,14 +8130,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj": {
-              "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj"
+            "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj": {
+              "projectPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj"
             },
-            "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Infrastructure\\PROJECT.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Infrastructure\\PROJECT.Infrastructure.csproj"
+            "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.Infrastructure\\PROJECT.Infrastructure.csproj": {
+              "projectPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.Infrastructure\\PROJECT.Infrastructure.csproj"
             },
-            "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Services\\PROJECT.Services.csproj": {
-              "projectPath": "C:\\Users\\hlonn\\Desktop\\PROJECT\\PROJECT.Services\\PROJECT.Services.csproj"
+            "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.Services\\PROJECT.Services.csproj": {
+              "projectPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.Services\\PROJECT.Services.csproj"
             }
           }
         }
