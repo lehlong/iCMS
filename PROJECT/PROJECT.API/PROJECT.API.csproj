@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Collection" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.ExpressionMapping" Version="6.0.4" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
     <PackageReference Include="JWT" Version="10.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
@@ -25,9 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PROJECT.Core\PROJECT.Core.csproj" />
-    <ProjectReference Include="..\PROJECT.Infrastructure\PROJECT.Infrastructure.csproj" />
-    <ProjectReference Include="..\PROJECT.Services\PROJECT.Services.csproj" />
+    <ProjectReference Include="..\PROJECT.API.DATA\PROJECT.API.DATA.csproj" />
+    <ProjectReference Include="..\PROJECT.API.DOMAIN\PROJECT.API.DOMAIN.csproj" />
   </ItemGroup>
 
 </Project>

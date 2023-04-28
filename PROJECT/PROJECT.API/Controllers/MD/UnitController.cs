@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PROJECT.Core.Models.MD;
-using PROJECT.Services.Interfaces.MD;
+using PROJECT.API.Services.Interfaces.MD;
 
 namespace PROJECT.API.Controllers.MD
 {
@@ -10,15 +9,17 @@ namespace PROJECT.API.Controllers.MD
     [Route("api/[controller]")]
     public class UnitController : ControllerBase
     {
-        public IUnitService _service { get; set; }
+        public readonly IUnitService _service;
         public UnitController(IUnitService service)
         {
             _service = service;
         }
 
+        [HttpGet("GetAll")]
         [AllowAnonymous]
-        [HttpGet]
-        public async Task<IEnumerable<T_MD_UNIT>> GetAll()
-          => await _service.GetAll();
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok(await _service.GetAll());
+        }
     }
 }

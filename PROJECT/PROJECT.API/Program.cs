@@ -6,11 +6,7 @@ using System.Text;
 using ConfigurationManager = PROJECT.API.ConfigurationManager;
 using Microsoft.AspNetCore.Http.Features;
 using PROJECT.API.Hubs;
-using PROJECT.Infrastructure.Common;
-using PROJECT.Services.Service.MD;
-using PROJECT.Services.Interfaces.MD;
-using Microsoft.EntityFrameworkCore;
-using PROJECT.Infrastructure;
+using PROJECT.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -86,13 +82,7 @@ builder.Services.AddCors(options => options.AddPolicy("CorsPolicy",
                    .AllowCredentials();
         }));
 
-builder.Services.AddTransient(typeof(IUnitService), typeof(UnitService));
-
-//Database
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-builder.Services.AddDbContext<ApplicationDbContext>(
-               x => x.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
+builder.Services.AddDIServices(builder.Configuration);
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
-﻿using PROJECT.API.Models.AD;
+﻿
+using PROJECT.API.DOMAIN.Models.AD;
 
 namespace PROJECT.API.Models.Authentication
 {
