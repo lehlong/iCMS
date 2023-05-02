@@ -1,14 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using PROJECT.API.DOMAIN.Common;
 using PROJECT.API.DOMAIN.Models.AD;
 using PROJECT.API.DOMAIN.Models.MD;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace PROJECT.API.DATA
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        protected IHttpContextAccessor HttpContextAccessor { get; }
+        public AppDbContext(DbContextOptions<AppDbContext> options, IHttpContextAccessor httpContextAccessor) : base(options)
         {
+            this.HttpContextAccessor = httpContextAccessor;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -43,6 +47,12 @@ namespace PROJECT.API.DATA
 
         private void TrackChanges()
         {
+            var token = HttpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Split(" ")[1];
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            JwtSecurityToken securityToken = (JwtSecurityToken)tokenHandler.ReadToken(token);
+            var claim = securityToken.Claims;
+            var user = claim.FirstOrDefault(x => x.Type == "username");
+
             foreach (var entry in this.ChangeTracker.Entries().Where(e => e.State == EntityState.Added || e.State == EntityState.Modified))
             {
                 if (entry.Entity is IBaseEntity)
@@ -50,12 +60,12 @@ namespace PROJECT.API.DATA
                     var auditable = entry.Entity as IBaseEntity;
                     if (entry.State == EntityState.Added)
                     {
-                        auditable.CREATE_BY = UserProvider;//  
+                        auditable.CREATE_BY = user?.Value;  
                         auditable.CREATE_DATE = TimestampProvider();
                     }
                     else
                     {
-                        auditable.UPDATE_BY = UserProvider;
+                        auditable.UPDATE_BY = user?.Value;
                         auditable.UPDATE_DATE = TimestampProvider();
                     }
                 }

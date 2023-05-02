@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8+qXI3LJtekeBs+9lrqH0xK5+tBTjSewxQH24lb5HFd7hfMZrNUQkha2gzR3xp8nZc9rCprvd9M9Y0xPMyDL5A==",
+  "dgSpecHash": "SwcFmKUKDxUt6WLTVQoctL3833h/Wq1rIfhfixe2kWepmlbWdzx1+ZFcZj9dzWAlih1hwSoIDrihqiGBncBYKQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,8 @@
     "C:\\Users\\hlonn\\.nuget\\packages\\documentformat.openxml\\2.20.0\\documentformat.openxml.2.20.0.nupkg.sha512",
     "C:\\Users\\hlonn\\.nuget\\packages\\jwt\\10.0.2\\jwt.10.0.2.nupkg.sha512",
     "C:\\Users\\hlonn\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.16\\microsoft.aspnetcore.authentication.jwtbearer.6.0.16.nupkg.sha512",
+    "C:\\Users\\hlonn\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\hlonn\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\hlonn\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\hlonn\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\hlonn\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",

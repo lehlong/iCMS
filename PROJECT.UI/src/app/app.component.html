@@ -238,12 +238,12 @@
       </a>
       <ul id="setting-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li *ngIf="checkUserRight('R0')">
-          <a routerLink="SystemManage/Organize/List">
+          <a routerLink="SystemManage/Organize">
             <i class="bi bi-circle"></i><span>{{'MNU_ORGANIZATION_STRUCTURE' | translate }}</span>
           </a>
         </li>
         <li>
-          <a routerLink="SystemManage/Users/List">
+          <a routerLink="SystemManage/Users">
             <i class="bi bi-circle"></i><span>{{'MNU_USER' | translate }}</span>
           </a>
         </li>
@@ -273,7 +273,7 @@
           </a>
         </li>
         <li>
-          <a routerLink="LanguageTranslate">
+          <a routerLink="SystemManage/Language">
             <i class="bi bi-circle"></i><span>{{'MNU_LANGUAGE_TRANSLATE' | translate }}</span>
           </a>
         </li>

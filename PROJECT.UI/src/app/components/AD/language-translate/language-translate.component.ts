@@ -81,7 +81,7 @@ export class LanguageTranslateComponent implements OnInit {
   }
 
   updateLanguageTranslate() {
-    this._service.updateLanguageTranslate(this.itemDetail?.ID, this.itemDetail)
+    this._service.updateLanguageTranslate(this.itemDetail)
       .subscribe({
         next: (response) => {
           this.ngOnInit();

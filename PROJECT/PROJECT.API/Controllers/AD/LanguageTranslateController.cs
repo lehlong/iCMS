@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json.Linq;
-using PROJECT.API.Data;
-using PROJECT.API.Models;
-using PROJECT.API.Models.AD;
+using PROJECT.API.DOMAIN.Models.AD;
 using PROJECT.API.Services.Interfaces.AD;
-using System.Text.Json.Nodes;
 
 namespace PROJECT.API.Controllers.AD
 {
@@ -29,53 +24,32 @@ namespace PROJECT.API.Controllers.AD
             return Ok(await _service.GetSelectLanguage(lang));
         }
 
-        //[HttpGet]
-        //[Route("GetList")]
-        //public async Task<IActionResult> GetList()
-        //{
-        //    var lstLanguageTranslate = await _context.T_AD_LANGUAGE_TRANSLATE.Take(200).ToArrayAsync();           
-        //    return Ok(lstLanguageTranslate);
-        //}
+        [HttpGet]
+        [Route("GetList")]
+        public async Task<IActionResult> GetList()
+        {
+            return Ok(await _service.GetAll());
+        }
 
-        //[HttpPost]
-        //[Route("Create")]
-        //public async Task<IActionResult> Create([FromBody] T_AD_LANGUAGE_TRANSLATE request)
-        //{
-        //    request.ID = Guid.NewGuid();
-        //    await _context.T_AD_LANGUAGE_TRANSLATE.AddAsync(request);
-        //    await _context.SaveChangesAsync();
-        //    return Ok(request);
-        //}       
+        [HttpGet]
+        [Route("Detail/{id:Guid}")]
+        public async Task<IActionResult> Detail([FromRoute] Guid id)
+        {
+            return Ok(await _service.LanguageDetail(id));
+        }
 
-        //[HttpPut]
-        //[Route("Update/{id:Guid}")]
-        //public async Task<IActionResult> UpdateItem([FromRoute] Guid id, T_AD_LANGUAGE_TRANSLATE request)
-        //{
-        //    var item = await _context.T_AD_LANGUAGE_TRANSLATE.FindAsync(id);
-        //    if (item == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    item.CONTENT = request.CONTENT;
-        //    item.UPDATE_DATE = DateTime.Now;
+        [HttpPost]
+        [Route("Create")]
+        public async Task<IActionResult> Create([FromBody] T_AD_LANGUAGE_TRANSLATE request)
+        {           
+            return Ok(await _service.Create(request));
+        }
 
-        //    await _context.SaveChangesAsync();
-
-        //    return Ok(item);
-        //}
-
-        //[HttpDelete]
-        //[Route("Delete/{id:Guid}")]
-        //public async Task<IActionResult> DeleteItem([FromRoute] Guid id)
-        //{
-        //    var item = await _context.T_AD_LANGUAGE_TRANSLATE.FindAsync(id);
-        //    if (item == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    _context.T_AD_LANGUAGE_TRANSLATE.Remove(item);
-        //    await _context.SaveChangesAsync();
-        //    return Ok(item);
-        //}
+        [HttpPut]
+        [Route("Update")]
+        public async Task<IActionResult> UpdateItem([FromBody] T_AD_LANGUAGE_TRANSLATE request)
+        {
+            return Ok(await _service.Update(request));
+        }        
     }
 }

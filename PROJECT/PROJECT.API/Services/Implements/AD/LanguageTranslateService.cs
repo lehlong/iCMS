@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using PROJECT.API.DATA.Common;
 using PROJECT.API.DOMAIN.Models.AD;
+using PROJECT.API.Models.Common;
 using PROJECT.API.Services.Commons;
 using PROJECT.API.Services.Dtos.AD;
 using PROJECT.API.Services.Interfaces.AD;
@@ -27,6 +28,50 @@ namespace PROJECT.API.Services.Implements.AD
             }
 
             return jsonObject;
+        }
+
+        public async Task<T_AD_LANGUAGE_TRANSLATE> LanguageDetail(Guid id)
+        {
+            return await UnitOfWork.Repo<T_AD_LANGUAGE_TRANSLATE>().GetByIdAsync(id);
+        }
+
+        public async Task<TranferObject> Update(T_AD_LANGUAGE_TRANSLATE request)
+        {
+            try
+            {
+                await UnitOfWork.Repo<T_AD_LANGUAGE_TRANSLATE>().UpdateAsync(request);
+                await UnitOfWork.SaveChangesAsync();
+                return new TranferObject
+                {
+                    Status = true,
+                    Message = new MessageObject
+                    {
+                        Message = "Thành công!",
+                        MessageDetail = "Cập nhật thông tin ngôn ngữ thành công!",
+                        MessageType = "S",
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                return new TranferObject
+                {
+                    Status = true,
+                    Message = new MessageObject
+                    {
+                        Message = "Thất bại!",
+                        MessageDetail = "Đã có lỗi xảy ra: " + ex.ToString(),
+                        MessageType = "E",
+                    }
+                };
+            }
+        }
+        public async Task<bool> Create(T_AD_LANGUAGE_TRANSLATE request)
+        {
+            request.ID = Guid.NewGuid();
+            await UnitOfWork.Repo<T_AD_LANGUAGE_TRANSLATE>().AddAsync(request);
+            await UnitOfWork.SaveChangesAsync();
+            return true;
         }
     }
 }

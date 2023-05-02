@@ -1,1 +1,32 @@
-<p>organize-create works!</p>
+<form (ngSubmit)="createOrganize()">
+    <div class="card">
+        <div class="card-header">{{'LANGUAGE_LIST_TITLE' | translate}}</div>
+        <div class="card-body">
+            <div class="d-flex flex-row">
+                <div class="p-2">
+                    <button type="submit" class="btn btn-success"><i
+                            class="bi bi-check2-all"></i> Lưu thông tin</button>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-6">
+                    <label class="form-label">Tên đơn vị</label>
+                    <input type="text" class="form-control" name="NAME" [(ngModel)]="itemCreate.NAME">
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Loại đơn vị</label>
+                    <input type="text" class="form-control" name="TYPE" [(ngModel)]="itemCreate.TYPE">
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Company Code</label>
+                    <input type="text" class="form-control" name="COMPANY_CODE" [(ngModel)]="itemCreate.COMPANY_CODE">
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Cost center code</label>
+                    <input type="text" class="form-control" name="COST_CENTER_CODE" [(ngModel)]="itemCreate.COST_CENTER_CODE">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

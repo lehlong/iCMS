@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-header">{{'LANGUAGE_LIST_TITLE' | translate}}</div>
+    <div class="card-body">
+        <div class="d-flex flex-row">
+            <div class="p-2">
+                <button type="button" class="btn btn-success" routerLink="/SystemManage/Language/Create"><i
+                        class="bi bi-plus-lg"></i> {{'LANGUAGE_LIST_BUTTON_ADD' | translate}}</button>
+            </div>
+            <div class="p-2">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input type="text" class="form-control" [placeholder]="['LANGUAGE_LIST_SEARCH' | translate]">
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-hover table-bordered" *ngIf="lstLanguageTranslate && lstLanguageTranslate.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">{{'LANGUAGE_LIST_CODE' | translate}}</th>
+                    <th scope="col">{{'LANGUAGE_LIST_TYPE' | translate}}</th>
+                    <th scope="col">{{'LANGUAGE_LIST_CONTENT' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstLanguageTranslate | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
+                    [routerLink]="['/SystemManage','Language','Edit', item.ID]">
+                    <td>{{item.KEY}}</td>
+                    <td>{{item.LANGUAGE}}</td>
+                    <td>{{item.CONTENT}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="float: right;">
+            <ngb-pagination [pageSize]="pageSize" [collectionSize]="lstLanguageTranslate.length" [(page)]="page"
+                [maxSize]="5" aria-label="Default pagination"></ngb-pagination>
+        </div>
+        <p *ngIf="!lstLanguageTranslate|| lstLanguageTranslate.length <= 0">{{'LANGUAGE_LIST_EMPTY' | translate}}</p>
+    </div>
+</div>

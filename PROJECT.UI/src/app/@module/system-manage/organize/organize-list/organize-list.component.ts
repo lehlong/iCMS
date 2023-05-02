@@ -1,31 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NodeOrganize } from 'src/app/models/AD/T_AD_ORGANIZE.model';
 import { T_AD_ORGANIZE_Service } from 'src/app/services/AD/T_AD_ORGANIZE.service';
 import { environment } from 'src/environments/environment';
-declare function MessageSuccess(response: string): any
-declare function MessageDanger(response: string): any
-declare function ShowLoading() :any
-declare function HideLoading() :any
+declare function Message(response: any): any
+declare function ShowLoading(): any
+declare function HideLoading(): any
 
 @Component({
   selector: 'app-organize-list',
   templateUrl: './organize-list.component.html',
 })
-export class OrganizeListComponent {
+export class OrganizeListComponent implements OnInit {
   constructor(public _service: T_AD_ORGANIZE_Service, private router: Router, private route: ActivatedRoute) { }
 
   dataTree: NodeOrganize[] = [];
 
   ngOnInit(): void {
+    ShowLoading()
     this._service.buildTreeOrganize()
       .subscribe({
-        next: (response) => {
-          buildTree(response)
-        },
-        error: (response) => {
-          console.log(response)
-        }
+        next: (response) => { buildTree(response); HideLoading(); },
+        error: (response) => { console.log(response); HideLoading(); }
       });
   }
   searchOrganize(event: any) {
@@ -95,15 +91,15 @@ function updateOrderTree() {
     type: 'PUT',
     dataType: "json",
     headers: {
-      Authorization : 'Bearer ' + localStorage.getItem('jwt')
+      Authorization: 'Bearer ' + localStorage.getItem('jwt')
     },
     url: `${environment.baseApiUrl}/api/Organize/UpdateOrder/${JSON.stringify(data)}`,
     success: function (response) {
-      MessageSuccess('Cập nhật thứ tự cây cấu trúc tổ chức thành công!');
+      Message(response);
       HideLoading();
     },
-    error: function(response){
-      MessageDanger('Cập nhật thất bại! Đã có lỗi xảy ra!');
+    error: function (response) {
+      Message(response);
       HideLoading();
     }
   });

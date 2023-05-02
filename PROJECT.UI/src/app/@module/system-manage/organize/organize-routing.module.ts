@@ -5,6 +5,7 @@ import { OrganizeEditComponent } from './organize-edit/organize-edit.component';
 import { OrganizeListComponent } from './organize-list/organize-list.component';
 
 const routes: Routes = [
+  { path: '', redirectTo:'List', pathMatch:'full' },
   { path: 'Create', component: OrganizeCreateComponent },
   { path: 'Edit/:code', component: OrganizeEditComponent },
   { path: 'List', component: OrganizeListComponent, data: { reuse: true } }

@@ -1,0 +1,29 @@
+<form (ngSubmit)="createLanguage()">
+    <div class="card">
+        <div class="card-header">{{'LANGUAGE_LIST_TITLE' | translate}}</div>
+        <div class="card-body">
+            <div class="d-flex flex-row">
+                <div class="p-2">
+                    <button type="submit" class="btn btn-success"><i
+                            class="bi bi-check2-all"></i> Lưu thông tin</button>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-6">
+                    <label class="form-label">Mã</label>
+                    <input type="text" class="form-control" name="KEY" [(ngModel)]="itemCreate.KEY">
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Ngôn ngữ</label>
+                    <ng-select [(ngModel)]="itemCreate.LANGUAGE" name="LANGUAGE">
+                        <ng-option *ngFor="let item of selectLanguage" [value]="item?.id">{{item?.name}}</ng-option>
+                    </ng-select>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Nội dung</label>
+                    <input type="text" class="form-control" name="CONTENT" [(ngModel)]="itemCreate.CONTENT">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

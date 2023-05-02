@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
 import { T_AD_ORGANIZE } from 'src/app/models/AD/T_AD_ORGANIZE.model';
 import { NodeOrganize } from 'src/app/models/AD/T_AD_ORGANIZE.model';
+import { TranferObject } from 'src/app/models/Common/tranfer-object.model';
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +42,17 @@ export class T_AD_ORGANIZE_Service {
   }
   searchOrganizeGrid(key: string): Observable<NodeOrganize[]> {
     return this.http.get<NodeOrganize[]>(this.apiUrl + '/api/Organize/Grid/Search/' + key,this.requestOptions)
+  }
+
+  getDetailOrganize(pkid: string): Observable<T_AD_ORGANIZE> {
+    return this.http.get<T_AD_ORGANIZE>(this.apiUrl + '/api/Organize/GetDetail/' + pkid,this.requestOptions)
+  }
+
+  updateOrganize(updateItemRequest : T_AD_ORGANIZE): Observable<TranferObject>{
+    return this.http.put<TranferObject>(this.apiUrl + '/api/Organize/Update', updateItemRequest, this.requestOptions)
+  }
+
+  createOrganize(addItemRequest : T_AD_ORGANIZE): Observable<TranferObject>{
+    return this.http.post<TranferObject>(this.apiUrl + '/api/Organize/Create', addItemRequest, this.requestOptions)
   }
 }

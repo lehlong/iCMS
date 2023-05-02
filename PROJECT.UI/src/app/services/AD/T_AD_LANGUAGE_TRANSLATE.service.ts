@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
 import { T_AD_LANGUAGE_TRANSLATE } from 'src/app/models/AD/T_AD_LANGUAGE_TRANSLATE.model';
+import { TranferObject } from 'src/app/models/Common/tranfer-object.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +24,15 @@ export class T_AD_LANGUAGE_TRANSLATE_Service {
       return this.http.get<T_AD_LANGUAGE_TRANSLATE[]>(this.apiUrl + '/api/LanguageTranslate/GetList', this.requestOptions)
   }
 
+  getLanguageTranslateDetail(id:string) : Observable<T_AD_LANGUAGE_TRANSLATE>{
+    return this.http.get<T_AD_LANGUAGE_TRANSLATE>(this.apiUrl + '/api/LanguageTranslate/Detail/' + id, this.requestOptions)
+}
+
   createLanguageTranslate(addItemRequest : T_AD_LANGUAGE_TRANSLATE): Observable<T_AD_LANGUAGE_TRANSLATE>{
-    debugger
     return this.http.post<T_AD_LANGUAGE_TRANSLATE>(this.apiUrl + '/api/LanguageTranslate/Create', addItemRequest, this.requestOptions)
   }
 
-  updateLanguageTranslate(pkid: string, updateItemRequest : T_AD_LANGUAGE_TRANSLATE): Observable<T_AD_LANGUAGE_TRANSLATE>{
-    return this.http.put<T_AD_LANGUAGE_TRANSLATE>(this.apiUrl + '/api/LanguageTranslate/Update/'+ pkid, updateItemRequest, this.requestOptions)
+  updateLanguageTranslate(updateItemRequest : T_AD_LANGUAGE_TRANSLATE): Observable<TranferObject>{
+    return this.http.put<TranferObject>(this.apiUrl + '/api/LanguageTranslate/Update', updateItemRequest, this.requestOptions)
   }
 }

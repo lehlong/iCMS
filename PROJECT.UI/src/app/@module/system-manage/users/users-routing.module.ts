@@ -5,6 +5,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
+  { path: '', redirectTo:'List', pathMatch:'full' },
   { path: 'Create', component: UserCreateComponent },
   { path: 'Edit/:username', component: UserEditComponent },
   { path: 'List', component: UserListComponent, data: { reuse: true } }
