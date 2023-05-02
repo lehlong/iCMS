@@ -40,7 +40,7 @@ namespace PROJECT.API.Services.Implements.AD
             return await UnitOfWork.Repo<T_AD_USER>().FirstOrDefaultAsync(x => x.USER_NAME == isvalidUsername && x.PASSWORD == isvalidPassword && x.ACTIVE == "Y");
         }
 
-        public List<string> GetRightUserAuthentication(Login user)
+        public async Task<List<string>> GetRightUserAuthentication(Login user)
         {
             var isvalidUsername = user.UserName.Trim();
             var isvalidPassword = EncryptStringMD5(user.Password.Trim());
@@ -101,6 +101,18 @@ namespace PROJECT.API.Services.Implements.AD
             }
 
             return lstRole;
+        }
+
+        public async Task<IEnumerable<T_AD_USER>> Search(string key)
+        {
+            if(key == "Empty")
+            {
+                return await UnitOfWork.Repo<T_AD_USER>().GetAllAsync();
+            }
+            else
+            {
+                return await UnitOfWork.Repo<T_AD_USER>().GetWhereAsync(x => x.USER_NAME.Contains(key) || x.FULL_NAME.Contains(key));
+            }
         }
     }
 }

@@ -1,6 +1,11 @@
-﻿namespace PROJECT.API.Services.Dtos.AD
+﻿using AutoMapper;
+using PROJECT.API.DOMAIN.Models.AD;
+using PROJECT.API.Services.Commons.Mapping;
+using PROJECT.API.Services.Dtos.MD;
+
+namespace PROJECT.API.Services.Dtos.AD
 {
-    public class T_AD_USER_Dto
+    public class T_AD_USER_Dto : IMapFrom
     {
         public string USER_NAME { get; set; }
         public string PASSWORD { get; set; }
@@ -20,5 +25,10 @@
         public string USER_SAP { get; set; }
         public string PASSWORD_SAP { get; set; }
         public DateTime? LAST_CHANGE_PASS_DATE { get; set; }
+
+        public void Mapping(Profile profile)
+        {
+            profile.CreateMap<T_AD_USER, T_AD_USER_Dto>().ReverseMap();
+        }
     }
 }

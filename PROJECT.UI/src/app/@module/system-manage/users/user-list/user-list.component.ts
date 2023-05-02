@@ -28,4 +28,17 @@ export class UserListComponent implements OnInit {
 
   pageSize : number = 15;
   page : number = this.listUser.length / this.pageSize;
+
+  searchUser(event: any) {
+    var key = event.target.value;
+    if(!key){
+      key = 'Empty'
+    }
+    this._service.searchUser(key)
+      .subscribe({
+        next: (response) => {
+          this.listUser = response
+        }
+      })
+  }
 }

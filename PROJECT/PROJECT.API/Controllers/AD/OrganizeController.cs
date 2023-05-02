@@ -6,6 +6,7 @@ using PROJECT.API.Data;
 using PROJECT.API.Models;
 using PROJECT.API.Models.AD;
 using PROJECT.API.Models.MD;
+using PROJECT.API.Services.Interfaces.AD;
 using static PROJECT.API.Models.Common.NodeTree;
 
 namespace PROJECT.API.Controllers.MD
@@ -15,254 +16,240 @@ namespace PROJECT.API.Controllers.MD
     [Route("api/[controller]")]
     public class OrganizeController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        public OrganizeController(ApplicationDbContext context)
+        private readonly IOrganizeService _service;
+        public OrganizeController(IOrganizeService service)
         {
-            _context = context;
+            _service = service;
         }
 
-        [HttpGet]
-        [Route("GetListCP")]
-        public async Task<IActionResult> GetListCP()
-        {
-            var dataOrganize = await _context.T_AD_ORGANIZE.Where(x => x.TYPE == "CP").ToArrayAsync();
+        //[HttpGet]
+        //[Route("GetListCP")]
+        //public async Task<IActionResult> GetListCP()
+        //{
+        //    var dataOrganize = await _context.T_AD_ORGANIZE.Where(x => x.TYPE == "CP").ToArrayAsync();
 
-            return Ok(dataOrganize);
-        }
+        //    return Ok(dataOrganize);
+        //}
 
-        [HttpGet]
-        [Route("GetListBP")]
-        public async Task<IActionResult> GetListBP()
-        {
-            var dataOrganize = await _context.T_AD_ORGANIZE.Where(x => x.TYPE == "BP").ToArrayAsync();
+        //[HttpGet]
+        //[Route("GetListBP")]
+        //public async Task<IActionResult> GetListBP()
+        //{
+        //    var dataOrganize = await _context.T_AD_ORGANIZE.Where(x => x.TYPE == "BP").ToArrayAsync();
 
-            return Ok(dataOrganize);
-        }
+        //    return Ok(dataOrganize);
+        //}
 
         [HttpGet]
         [Route("BuildTree")]
         public async Task<IActionResult> BuildTree()
-        {
-            var lstNode = new List<NodeOrganize>();
-            var dataOrganize = await _context.T_AD_ORGANIZE.ToListAsync();
+        {        
+            return Ok(await _service.BuildTreeOrganize());
+        }
+
+        //[HttpGet]
+        //[Route("Grid/DataTable")]
+        //public async Task<IActionResult> GetDataTable()
+        //{
+        //    var dataOrganize = await _context.T_AD_ORGANIZE.ToArrayAsync();
+
+        //    return Ok(dataOrganize);
+        //}
+
+        //[HttpGet]
+        //[Route("Grid/BuildTree")]
+        //public async Task<IActionResult> BuildTreeGrid()
+        //{
+        //    var lstNode = new List<NodeOrganize>();
+        //    var dataOrganize = await _context.T_AD_ORGANIZE.Where(x => x.TYPE == "CP").ToListAsync();
+
+        //    foreach (var item in dataOrganize.OrderBy(x => x.C_ORDER))
+        //    {
+        //        var node = new NodeOrganize()
+        //        {
+        //            id = item.PKID,
+        //            pId = item.PARENT,
+        //            name = item.NAME
+        //        };
+        //        lstNode.Add(node);
+        //    }
+
+        //    return Ok(lstNode);
+        //}
+
+        //[HttpGet]
+        //[Route("Search/{key}")]
+        //public async Task<IActionResult> Search([FromRoute] string key)
+        //{
+        //    var lstNode = new List<NodeOrganize>();
+        //    var dataOrganize = key == "Empty" ? await _context.T_AD_ORGANIZE.ToArrayAsync() : await _context.T_AD_ORGANIZE.Where(x => x.NAME.Contains(key)).ToArrayAsync();
             
-            foreach (var item in dataOrganize.OrderBy(x => x.C_ORDER))
-            {
-                var node = new NodeOrganize()
-                {
-                    id = item.PKID,
-                    pId = item.PARENT,
-                    name = item.NAME
-                };
-                lstNode.Add(node);
-            }
+        //    foreach (var item in dataOrganize.OrderBy(x => x.C_ORDER))
+        //    {
+        //        var node = new NodeOrganize()
+        //        {
+        //            id = item.PKID,
+        //            pId = item.PARENT,
+        //            name = item.NAME
+        //        };
+        //        lstNode.Add(node);
+        //    }
+        //    return Ok(lstNode);
+        //}
 
-            return Ok(lstNode);
-        }
+        //[HttpGet]
+        //[Route("Detail/{id}")]
+        //public async Task<IActionResult> GetDetail([FromRoute] string id)
+        //{
+        //    var item = await _context.T_AD_ORGANIZE.FirstOrDefaultAsync(x => x.PKID == id);
+        //    if (item == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(item);
+        //}
 
-        [HttpGet]
-        [Route("Grid/DataTable")]
-        public async Task<IActionResult> GetDataTable()
-        {
-            var dataOrganize = await _context.T_AD_ORGANIZE.ToArrayAsync();
+        //[HttpGet]
+        //[Route("GetChild/{id}")]
+        //public async Task<IActionResult> GetChildCompany([FromRoute] string id)
+        //{
+        //    var item = await _context.T_AD_ORGANIZE.Where(x => x.PARENT == id).ToArrayAsync();
+        //    if (item == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(item);
+        //}
 
-            return Ok(dataOrganize);
-        }
+        //[HttpGet]
+        //[Route("Grid/Search/{key}")]
+        //public async Task<IActionResult> SearchGrid([FromRoute] string key)
+        //{
+        //    var lstNode = new List<NodeOrganize>();
+        //    var dataOrganize = key == "Empty" ? await _context.T_AD_ORGANIZE.Where(x => x.TYPE == "CP").ToArrayAsync() : await _context.T_AD_ORGANIZE.Where(x => x.NAME.Contains(key) && x.TYPE == "CP").ToArrayAsync();
 
-        [HttpGet]
-        [Route("Grid/BuildTree")]
-        public async Task<IActionResult> BuildTreeGrid()
-        {
-            var lstNode = new List<NodeOrganize>();
-            var dataOrganize = await _context.T_AD_ORGANIZE.Where(x => x.TYPE == "CP").ToListAsync();
+        //    foreach (var item in dataOrganize.OrderBy(x => x.C_ORDER))
+        //    {
+        //        var node = new NodeOrganize()
+        //        {
+        //            id = item.PKID,
+        //            pId = item.PARENT,
+        //            name = item.NAME
+        //        };
+        //        lstNode.Add(node);
+        //    }
+        //    return Ok(lstNode);
+        //}
 
-            foreach (var item in dataOrganize.OrderBy(x => x.C_ORDER))
-            {
-                var node = new NodeOrganize()
-                {
-                    id = item.PKID,
-                    pId = item.PARENT,
-                    name = item.NAME
-                };
-                lstNode.Add(node);
-            }
+        //[HttpDelete]
+        //[Route("Delete/{id}")]
+        //public async Task<IActionResult> DeleteItem([FromRoute] string id)
+        //{
+        //    var item = await _context.T_AD_ORGANIZE.FirstOrDefaultAsync(x => x.PKID == id);
+        //    if (item == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    _context.T_AD_ORGANIZE.Remove(item);
+        //    await _context.SaveChangesAsync();
 
-            return Ok(lstNode);
-        }
+        //    var lstNode = new List<NodeOrganize>();
+        //    var dataOrganize = await _context.T_AD_ORGANIZE.ToListAsync();
 
-        [HttpGet]
-        [Route("Search/{key}")]
-        public async Task<IActionResult> Search([FromRoute] string key)
-        {
-            var lstNode = new List<NodeOrganize>();
-            var dataOrganize = key == "Empty" ? await _context.T_AD_ORGANIZE.ToArrayAsync() : await _context.T_AD_ORGANIZE.Where(x => x.NAME.Contains(key)).ToArrayAsync();
-            
-            foreach (var item in dataOrganize.OrderBy(x => x.C_ORDER))
-            {
-                var node = new NodeOrganize()
-                {
-                    id = item.PKID,
-                    pId = item.PARENT,
-                    name = item.NAME
-                };
-                lstNode.Add(node);
-            }
-            return Ok(lstNode);
-        }
+        //    foreach (var org in dataOrganize.OrderBy(x => x.C_ORDER))
+        //    {
+        //        var node = new NodeOrganize()
+        //        {
+        //            id = org.PKID,
+        //            pId = org.PARENT,
+        //            name = org.NAME
+        //        };
+        //        lstNode.Add(node);
+        //    }
+        //    return Ok(lstNode);
+        //}
 
-        [HttpGet]
-        [Route("Detail/{id}")]
-        public async Task<IActionResult> GetDetail([FromRoute] string id)
-        {
-            var item = await _context.T_AD_ORGANIZE.FirstOrDefaultAsync(x => x.PKID == id);
-            if (item == null)
-            {
-                return NotFound();
-            }
-            return Ok(item);
-        }
+        //[HttpPut]
+        //[Route("Update/{request}")]
+        //public async Task<IActionResult> updateItem([FromRoute] string request)
+        //{
+        //    var jsonData = JsonConvert.DeserializeObject<T_AD_ORGANIZE>(request);
+        //    var item = await _context.T_AD_ORGANIZE.FindAsync(jsonData.PKID);
+        //    if (item == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    item.NAME = jsonData.NAME;
+        //    item.TYPE = jsonData.TYPE;
+        //    item.COMPANY_CODE = jsonData.COMPANY_CODE;
+        //    item.COST_CENTER_CODE = jsonData.COST_CENTER_CODE;
+        //    item.UPDATE_DATE = DateTime.Now;
 
-        [HttpGet]
-        [Route("GetChild/{id}")]
-        public async Task<IActionResult> GetChildCompany([FromRoute] string id)
-        {
-            var item = await _context.T_AD_ORGANIZE.Where(x => x.PARENT == id).ToArrayAsync();
-            if (item == null)
-            {
-                return NotFound();
-            }
-            return Ok(item);
-        }
+        //    await _context.SaveChangesAsync();
 
-        [HttpGet]
-        [Route("Grid/Search/{key}")]
-        public async Task<IActionResult> SearchGrid([FromRoute] string key)
-        {
-            var lstNode = new List<NodeOrganize>();
-            var dataOrganize = key == "Empty" ? await _context.T_AD_ORGANIZE.Where(x => x.TYPE == "CP").ToArrayAsync() : await _context.T_AD_ORGANIZE.Where(x => x.NAME.Contains(key) && x.TYPE == "CP").ToArrayAsync();
+        //    var lstNode = new List<NodeOrganize>();
+        //    var dataOrganize = await _context.T_AD_ORGANIZE.ToListAsync();
 
-            foreach (var item in dataOrganize.OrderBy(x => x.C_ORDER))
-            {
-                var node = new NodeOrganize()
-                {
-                    id = item.PKID,
-                    pId = item.PARENT,
-                    name = item.NAME
-                };
-                lstNode.Add(node);
-            }
-            return Ok(lstNode);
-        }
+        //    foreach (var node in dataOrganize.OrderBy(x => x.C_ORDER))
+        //    {
+        //        var nodeItem = new NodeOrganize()
+        //        {
+        //            id = node.PKID,
+        //            pId = node.PARENT,
+        //            name = node.NAME
+        //        };
+        //        lstNode.Add(nodeItem);
+        //    }
 
-        [HttpDelete]
-        [Route("Delete/{id}")]
-        public async Task<IActionResult> DeleteItem([FromRoute] string id)
-        {
-            var item = await _context.T_AD_ORGANIZE.FirstOrDefaultAsync(x => x.PKID == id);
-            if (item == null)
-            {
-                return NotFound();
-            }
-            _context.T_AD_ORGANIZE.Remove(item);
-            await _context.SaveChangesAsync();
+        //    return Ok(lstNode);
+        //}
 
-            var lstNode = new List<NodeOrganize>();
-            var dataOrganize = await _context.T_AD_ORGANIZE.ToListAsync();
+        //[HttpPut]
+        //[Route("UpdateOrder/{request}")]
+        //public async Task<IActionResult> updateOrder([FromRoute] string request)
+        //{
+        //    var jsonData = JsonConvert.DeserializeObject<NodeOrganize[]>(request);
+        //    for(var i = 0; i< jsonData.Length; i++)
+        //    {
+        //        var item = await _context.T_AD_ORGANIZE.FindAsync(jsonData[i].id);
+        //        if(item == null)
+        //        {
+        //            continue;
+        //        }
+        //        else
+        //        {
+        //            item.PARENT = jsonData[i].pId;
+        //            item.C_ORDER = i;
+        //        }
+        //    }
+        //    await _context.SaveChangesAsync();
+        //    return Ok(jsonData);
+        //}
 
-            foreach (var org in dataOrganize.OrderBy(x => x.C_ORDER))
-            {
-                var node = new NodeOrganize()
-                {
-                    id = org.PKID,
-                    pId = org.PARENT,
-                    name = org.NAME
-                };
-                lstNode.Add(node);
-            }
-            return Ok(lstNode);
-        }
+        //[HttpPost]
+        //[Route("Create/{request}")]
+        //public async Task<IActionResult> AddItem([FromRoute] string request)
+        //{
+        //    var jsonData = JsonConvert.DeserializeObject<T_AD_ORGANIZE>(request);
+        //    jsonData.PKID = Guid.NewGuid().ToString();
+        //    await _context.T_AD_ORGANIZE.AddAsync(jsonData);
+        //    await _context.SaveChangesAsync();
 
-        [HttpPut]
-        [Route("Update/{request}")]
-        public async Task<IActionResult> updateItem([FromRoute] string request)
-        {
-            var jsonData = JsonConvert.DeserializeObject<T_AD_ORGANIZE>(request);
-            var item = await _context.T_AD_ORGANIZE.FindAsync(jsonData.PKID);
-            if (item == null)
-            {
-                return NotFound();
-            }
-            item.NAME = jsonData.NAME;
-            item.TYPE = jsonData.TYPE;
-            item.COMPANY_CODE = jsonData.COMPANY_CODE;
-            item.COST_CENTER_CODE = jsonData.COST_CENTER_CODE;
-            item.UPDATE_DATE = DateTime.Now;
+        //    var lstNode = new List<NodeOrganize>();
+        //    var dataOrganize = await _context.T_AD_ORGANIZE.ToListAsync();
 
-            await _context.SaveChangesAsync();
+        //    foreach (var node in dataOrganize.OrderBy(x => x.C_ORDER))
+        //    {
+        //        var nodeItem = new NodeOrganize()
+        //        {
+        //            id = node.PKID,
+        //            pId = node.PARENT,
+        //            name = node.NAME
+        //        };
+        //        lstNode.Add(nodeItem);
+        //    }
 
-            var lstNode = new List<NodeOrganize>();
-            var dataOrganize = await _context.T_AD_ORGANIZE.ToListAsync();
-
-            foreach (var node in dataOrganize.OrderBy(x => x.C_ORDER))
-            {
-                var nodeItem = new NodeOrganize()
-                {
-                    id = node.PKID,
-                    pId = node.PARENT,
-                    name = node.NAME
-                };
-                lstNode.Add(nodeItem);
-            }
-
-            return Ok(lstNode);
-        }
-
-        [HttpPut]
-        [Route("UpdateOrder/{request}")]
-        public async Task<IActionResult> updateOrder([FromRoute] string request)
-        {
-            var jsonData = JsonConvert.DeserializeObject<NodeOrganize[]>(request);
-            for(var i = 0; i< jsonData.Length; i++)
-            {
-                var item = await _context.T_AD_ORGANIZE.FindAsync(jsonData[i].id);
-                if(item == null)
-                {
-                    continue;
-                }
-                else
-                {
-                    item.PARENT = jsonData[i].pId;
-                    item.C_ORDER = i;
-                }
-            }
-            await _context.SaveChangesAsync();
-            return Ok(jsonData);
-        }
-
-        [HttpPost]
-        [Route("Create/{request}")]
-        public async Task<IActionResult> AddItem([FromRoute] string request)
-        {
-            var jsonData = JsonConvert.DeserializeObject<T_AD_ORGANIZE>(request);
-            jsonData.PKID = Guid.NewGuid().ToString();
-            await _context.T_AD_ORGANIZE.AddAsync(jsonData);
-            await _context.SaveChangesAsync();
-
-            var lstNode = new List<NodeOrganize>();
-            var dataOrganize = await _context.T_AD_ORGANIZE.ToListAsync();
-
-            foreach (var node in dataOrganize.OrderBy(x => x.C_ORDER))
-            {
-                var nodeItem = new NodeOrganize()
-                {
-                    id = node.PKID,
-                    pId = node.PARENT,
-                    name = node.NAME
-                };
-                lstNode.Add(nodeItem);
-            }
-
-            return Ok(lstNode);
-        }
+        //    return Ok(lstNode);
+        //}
     }
 }

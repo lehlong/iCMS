@@ -28,3 +28,18 @@ D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\PROJECT.API.D
 D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\refint\PROJECT.API.DATA.dll
 D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\PROJECT.API.DATA.pdb
 D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\ref\PROJECT.API.DATA.dll
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\bin\Debug\net6.0\PROJECT.API.DATA.deps.json
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\bin\Debug\net6.0\PROJECT.API.DATA.dll
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\bin\Debug\net6.0\PROJECT.API.DATA.pdb
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\bin\Debug\net6.0\PROJECT.API.DOMAIN.dll
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\bin\Debug\net6.0\PROJECT.API.DOMAIN.pdb
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\PROJECT.API.DATA.csproj.AssemblyReference.cache
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\PROJECT.API.DATA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\PROJECT.API.DATA.AssemblyInfoInputs.cache
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\PROJECT.API.DATA.AssemblyInfo.cs
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\PROJECT.API.DATA.csproj.CoreCompileInputs.cache
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\PROJECT.API.DATA.csproj.CopyComplete
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\PROJECT.API.DATA.dll
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\refint\PROJECT.API.DATA.dll
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\PROJECT.API.DATA.pdb
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DATA\obj\Debug\net6.0\ref\PROJECT.API.DATA.dll

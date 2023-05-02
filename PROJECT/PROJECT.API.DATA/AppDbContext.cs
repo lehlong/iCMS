@@ -72,6 +72,7 @@ namespace PROJECT.API.DATA
         public DbSet<T_AD_USER_GROUP_ROLE> T_AD_USER_GROUP_ROLE { get; set; }
         public DbSet<T_AD_USER_RIGHT> T_AD_USER_RIGHT { get; set; }
         public DbSet<T_AD_USER_USER_GROUP> T_AD_USER_USER_GROUP { get; set; }
+        public DbSet<T_AD_ORGANIZE> T_AD_ORGANIZE { get; set; }
 
 
         #endregion

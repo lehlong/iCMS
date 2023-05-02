@@ -26,6 +26,10 @@ export class T_AD_USER_Service {
     return this.http.get<T_AD_USER[]>(this.apiUrl + '/api/User/GetList', this.requestOptions)
   }
 
+  searchUser(key:string): Observable<T_AD_USER[]> {
+    return this.http.get<T_AD_USER[]>(this.apiUrl + `/api/User/Search/${key}`, this.requestOptions)
+  }
+
   createUser(addItemRequest: T_AD_USER): Observable<T_AD_USER> {
     return this.http.post<T_AD_USER>(this.apiUrl + '/api/User/Create', addItemRequest, this.requestOptions)
   }

@@ -6,6 +6,7 @@ using System.Text;
 using PROJECT.API.Models.Authentication;
 using UAParser;
 using PROJECT.API.Services.Implements.AD;
+using PROJECT.API.Services.Interfaces.AD;
 
 namespace PROJECT.API.Controllers
 {
@@ -13,8 +14,8 @@ namespace PROJECT.API.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        public readonly UserService _service;
-        public AuthenticationController(UserService service)
+        public readonly IUserService _service;
+        public AuthenticationController(IUserService service)
         {
             _service = service;
         }
@@ -31,12 +32,12 @@ namespace PROJECT.API.Controllers
                 return BadRequest("Invalid user request!!!");
             }
 
-            var result = _service.CheckUserAuthentication(user);
+            var result = await _service.CheckUserAuthentication(user);
             
             if (result != null)
             {
                 //Lấy các role quyền
-                var lstRole = _service.GetRightUserAuthentication(user);
+                var lstRole = await _service.GetRightUserAuthentication(user);
                 
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(ConfigurationManager.AppSetting["JWT:Secret"]));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
@@ -67,11 +68,11 @@ namespace PROJECT.API.Controllers
                 //await _context.T_AD_HISTORY_LOGIN.AddAsync(info);
                 //await _context.SaveChangesAsync();
 
-                result.Result.PASSWORD = "";
+                result.PASSWORD = "";
                 return Ok(new JWTTokenResponse
                 {
                     Token = tokenString,
-                    User = result.Result,
+                    User = result,
                     ListRight = lstRole.Distinct().ToList(),
                 });
             }

@@ -4111,19 +4111,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LONGD2S\\.nuget\\packages\\": {}
+    "C:\\Users\\hlonn\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
+      "projectUniqueName": "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
       "projectName": "PROJECT.API",
-      "projectPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
-      "packagesPath": "C:\\Users\\LONGD2S\\.nuget\\packages\\",
-      "outputPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API\\obj\\",
+      "projectPath": "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
+      "packagesPath": "C:\\Users\\hlonn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\LONGD2S\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hlonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4137,11 +4137,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API.DATA\\PROJECT.API.DATA.csproj": {
-              "projectPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API.DATA\\PROJECT.API.DATA.csproj"
+            "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API.DATA\\PROJECT.API.DATA.csproj": {
+              "projectPath": "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API.DATA\\PROJECT.API.DATA.csproj"
             },
-            "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API.DOMAIN\\PROJECT.API.DOMAIN.csproj": {
-              "projectPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API.DOMAIN\\PROJECT.API.DOMAIN.csproj"
+            "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API.DOMAIN\\PROJECT.API.DOMAIN.csproj": {
+              "projectPath": "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API.DOMAIN\\PROJECT.API.DOMAIN.csproj"
             }
           }
         }

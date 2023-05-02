@@ -22,3 +22,15 @@ D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\PROJECT.API
 D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\refint\PROJECT.API.DOMAIN.dll
 D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\PROJECT.API.DOMAIN.pdb
 D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\ref\PROJECT.API.DOMAIN.dll
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DOMAIN\bin\Debug\net6.0\PROJECT.API.DOMAIN.deps.json
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DOMAIN\bin\Debug\net6.0\PROJECT.API.DOMAIN.dll
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DOMAIN\bin\Debug\net6.0\PROJECT.API.DOMAIN.pdb
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\PROJECT.API.DOMAIN.csproj.AssemblyReference.cache
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\PROJECT.API.DOMAIN.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\PROJECT.API.DOMAIN.AssemblyInfoInputs.cache
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\PROJECT.API.DOMAIN.AssemblyInfo.cs
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\PROJECT.API.DOMAIN.csproj.CoreCompileInputs.cache
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\PROJECT.API.DOMAIN.dll
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\refint\PROJECT.API.DOMAIN.dll
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\PROJECT.API.DOMAIN.pdb
+C:\Users\hlonn\Desktop\iCMS\PROJECT\PROJECT.API.DOMAIN\obj\Debug\net6.0\ref\PROJECT.API.DOMAIN.dll

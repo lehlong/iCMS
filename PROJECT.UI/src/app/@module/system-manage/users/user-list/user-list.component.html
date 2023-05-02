@@ -9,13 +9,13 @@
             <div class="p-2">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="bi bi-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Tìm kiếm">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm" (keyup)="searchUser($event)">
                   </div>
             </div>
           </div>
 
 
-        <div style="margin: 0px 6px;">
+        <div style="margin: 0px 6px;" *ngIf="listUser && listUser.length > 0">
             <table class="table table-hover table-bordered" id="table-user">
                 <thead>
                     <tr>
