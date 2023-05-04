@@ -1,0 +1,15 @@
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\obj\Debug\net6.0\PROJECT.Service.csproj.AssemblyReference.cache
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\obj\Debug\net6.0\PROJECT.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\obj\Debug\net6.0\PROJECT.Service.AssemblyInfoInputs.cache
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\obj\Debug\net6.0\PROJECT.Service.AssemblyInfo.cs
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\obj\Debug\net6.0\PROJECT.Service.csproj.CoreCompileInputs.cache
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\bin\Debug\net6.0\PROJECT.Service.deps.json
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\bin\Debug\net6.0\PROJECT.Service.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\bin\Debug\net6.0\PROJECT.Service.pdb
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\bin\Debug\net6.0\PROJECT.Core.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\bin\Debug\net6.0\PROJECT.Core.pdb
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\obj\Debug\net6.0\PROJECT.Service.csproj.CopyComplete
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\obj\Debug\net6.0\PROJECT.Service.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\obj\Debug\net6.0\refint\PROJECT.Service.dll
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\obj\Debug\net6.0\PROJECT.Service.pdb
+D:\D2S Project\iCMS\iCMS\PROJECT\PROJECT.Service\obj\Debug\net6.0\ref\PROJECT.Service.dll

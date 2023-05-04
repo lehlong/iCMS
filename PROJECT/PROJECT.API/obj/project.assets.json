@@ -1443,30 +1443,50 @@
           "lib/portable-win+net45+sl50+wp80/XAct.Core.PCL.dll": {}
         }
       },
-      "PROJECT.API.DATA/1.0.0": {
+      "PROJECT.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.EntityFrameworkCore": "7.0.5",
-          "PROJECT.API.DOMAIN": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "6.29.0"
         },
         "compile": {
-          "bin/placeholder/PROJECT.API.DATA.dll": {}
+          "bin/placeholder/PROJECT.Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/PROJECT.API.DATA.dll": {}
+          "bin/placeholder/PROJECT.Core.dll": {}
         }
       },
-      "PROJECT.API.DOMAIN/1.0.0": {
+      "PROJECT.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
-          "bin/placeholder/PROJECT.API.DOMAIN.dll": {}
+          "bin/placeholder/PROJECT.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/PROJECT.API.DOMAIN.dll": {}
+          "bin/placeholder/PROJECT.Domain.dll": {}
+        }
+      },
+      "PROJECT.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper.Extensions.ExpressionMapping": "6.0.4",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
+          "DocumentFormat.OpenXml": "2.20.0",
+          "Microsoft.EntityFrameworkCore": "7.0.5",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
+          "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
+          "Newtonsoft.Json": "13.0.3",
+          "PROJECT.Core": "1.0.0",
+          "XAct.Core.PCL": "0.0.5014"
+        },
+        "compile": {
+          "bin/placeholder/PROJECT.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PROJECT.Service.dll": {}
         }
       }
     }
@@ -4139,15 +4159,20 @@
         "xact.core.pcl.nuspec"
       ]
     },
-    "PROJECT.API.DATA/1.0.0": {
+    "PROJECT.Core/1.0.0": {
       "type": "project",
-      "path": "../PROJECT.API.DATA/PROJECT.API.DATA.csproj",
-      "msbuildProject": "../PROJECT.API.DATA/PROJECT.API.DATA.csproj"
+      "path": "../PROJECT.Core/PROJECT.Core.csproj",
+      "msbuildProject": "../PROJECT.Core/PROJECT.Core.csproj"
     },
-    "PROJECT.API.DOMAIN/1.0.0": {
+    "PROJECT.Domain/1.0.0": {
       "type": "project",
-      "path": "../PROJECT.API.DOMAIN/PROJECT.API.DOMAIN.csproj",
-      "msbuildProject": "../PROJECT.API.DOMAIN/PROJECT.API.DOMAIN.csproj"
+      "path": "../PROJECT.API.DOMAIN/PROJECT.Domain.csproj",
+      "msbuildProject": "../PROJECT.API.DOMAIN/PROJECT.Domain.csproj"
+    },
+    "PROJECT.Service/1.0.0": {
+      "type": "project",
+      "path": "../PROJECT.Service/PROJECT.Service.csproj",
+      "msbuildProject": "../PROJECT.Service/PROJECT.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4162,8 +4187,9 @@
       "Microsoft.EntityFrameworkCore >= 7.0.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.5",
       "Newtonsoft.Json >= 13.0.3",
-      "PROJECT.API.DATA >= 1.0.0",
-      "PROJECT.API.DOMAIN >= 1.0.0",
+      "PROJECT.Core >= 1.0.0",
+      "PROJECT.Domain >= 1.0.0",
+      "PROJECT.Service >= 1.0.0",
       "Spire.Doc >= 11.4.0",
       "Swashbuckle.AspNetCore >= 6.2.3",
       "System.IdentityModel.Tokens.Jwt >= 6.29.0",
@@ -4172,19 +4198,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hlonn\\.nuget\\packages\\": {}
+    "C:\\Users\\LONGD2S\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
+      "projectUniqueName": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
       "projectName": "PROJECT.API",
-      "projectPath": "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
-      "packagesPath": "C:\\Users\\hlonn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API\\obj\\",
+      "projectPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API\\PROJECT.API.csproj",
+      "packagesPath": "C:\\Users\\LONGD2S\\.nuget\\packages\\",
+      "outputPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\hlonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\LONGD2S\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4198,11 +4224,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API.DATA\\PROJECT.API.DATA.csproj": {
-              "projectPath": "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API.DATA\\PROJECT.API.DATA.csproj"
+            "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API.DOMAIN\\PROJECT.Domain.csproj": {
+              "projectPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.API.DOMAIN\\PROJECT.Domain.csproj"
             },
-            "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API.DOMAIN\\PROJECT.API.DOMAIN.csproj": {
-              "projectPath": "C:\\Users\\hlonn\\Desktop\\iCMS\\PROJECT\\PROJECT.API.DOMAIN\\PROJECT.API.DOMAIN.csproj"
+            "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj": {
+              "projectPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.Core\\PROJECT.Core.csproj"
+            },
+            "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.Service\\PROJECT.Service.csproj": {
+              "projectPath": "D:\\D2S Project\\iCMS\\iCMS\\PROJECT\\PROJECT.Service\\PROJECT.Service.csproj"
             }
           }
         }

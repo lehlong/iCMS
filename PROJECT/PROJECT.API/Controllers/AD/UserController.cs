@@ -1,14 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using PROJECT.API.Data;
-using PROJECT.API.Models;
-using PROJECT.API.Models.AD;
-using PROJECT.API.Models.MD;
-using PROJECT.API.Services.Interfaces.AD;
-using XSystem.Security.Cryptography;
-using static PROJECT.API.Models.Common.NodeTree;
+using PROJECT.Service.Interfaces.AD;
 
 namespace PROJECT.API.Controllers.MD
 {

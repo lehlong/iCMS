@@ -3,10 +3,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using PROJECT.API.Models.Authentication;
 using UAParser;
-using PROJECT.API.Services.Implements.AD;
-using PROJECT.API.Services.Interfaces.AD;
+using PROJECT.Service.Interfaces.AD;
+using PROJECT.Service.Commons.Authentication;
 
 namespace PROJECT.API.Controllers
 {

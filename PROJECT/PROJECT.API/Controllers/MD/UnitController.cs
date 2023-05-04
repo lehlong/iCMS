@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PROJECT.API.Services.Interfaces.MD;
+using PROJECT.Service.Interfaces.MD;
 
 namespace PROJECT.API.Controllers.MD
 {

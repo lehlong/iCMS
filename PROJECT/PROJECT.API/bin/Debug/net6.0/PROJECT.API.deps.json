@@ -18,8 +18,9 @@
           "Microsoft.EntityFrameworkCore": "7.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
           "Newtonsoft.Json": "13.0.3",
-          "PROJECT.API.DATA": "1.0.0",
-          "PROJECT.API.DOMAIN": "1.0.0",
+          "PROJECT.Core": "1.0.0",
+          "PROJECT.Domain": "1.0.0",
+          "PROJECT.Service": "1.0.0",
           "Spire.Doc": "11.4.0",
           "Swashbuckle.AspNetCore": "6.2.3",
           "System.IdentityModel.Tokens.Jwt": "6.29.0",
@@ -845,20 +846,30 @@
           }
         }
       },
-      "PROJECT.API.DATA/1.0.0": {
+      "PROJECT.Core/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.EntityFrameworkCore": "7.0.5",
-          "PROJECT.API.DOMAIN": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "6.29.0"
         },
         "runtime": {
-          "PROJECT.API.DATA.dll": {}
+          "PROJECT.Core.dll": {}
         }
       },
-      "PROJECT.API.DOMAIN/1.0.0": {
+      "PROJECT.Service/1.0.0": {
+        "dependencies": {
+          "AutoMapper.Extensions.ExpressionMapping": "6.0.4",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
+          "DocumentFormat.OpenXml": "2.20.0",
+          "Microsoft.EntityFrameworkCore": "7.0.5",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
+          "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
+          "Newtonsoft.Json": "13.0.3",
+          "PROJECT.Core": "1.0.0",
+          "XAct.Core.PCL": "0.0.5014"
+        },
         "runtime": {
-          "PROJECT.API.DOMAIN.dll": {}
+          "PROJECT.Service.dll": {}
         }
       }
     }
@@ -1464,12 +1475,12 @@
       "path": "xact.core.pcl/0.0.5014",
       "hashPath": "xact.core.pcl.0.0.5014.nupkg.sha512"
     },
-    "PROJECT.API.DATA/1.0.0": {
+    "PROJECT.Core/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "PROJECT.API.DOMAIN/1.0.0": {
+    "PROJECT.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -6,7 +6,8 @@ using System.Text;
 using ConfigurationManager = PROJECT.API.ConfigurationManager;
 using Microsoft.AspNetCore.Http.Features;
 using PROJECT.API.Hubs;
-using PROJECT.API;
+using PROJECT.Core;
+using PROJECT.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
