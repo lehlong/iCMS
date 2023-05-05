@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BaseFilter } from 'src/app/@filter/Common/base-filter.model';
 import { T_AD_USER } from 'src/app/models/AD/T_AD_USER.model';
-import { Pagination } from 'src/app/models/Common/pagination.model';
 import { UserService } from 'src/app/services/AD/user.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class UserListComponent implements OnInit {
   constructor(private _service: UserService) { }
 
   listUser: T_AD_USER[] = [];
-  pagination: Pagination = {
+  pagination: BaseFilter = {
     CurrentPage: 1,
     TotalPage: 0,
     ItemCount: 0,

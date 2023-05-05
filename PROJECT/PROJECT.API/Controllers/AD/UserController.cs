@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PROJECT.Service.Extention;
+using PROJECT.Service.Filter.AD;
 using PROJECT.Service.Interfaces.AD;
 
 namespace PROJECT.API.Controllers.MD
@@ -18,7 +19,7 @@ namespace PROJECT.API.Controllers.MD
 
         [HttpGet]
         [Route("GetList")]
-        public async Task<IActionResult> GetList([FromQuery] PaginationModel page)
+        public async Task<IActionResult> GetList([FromQuery] UserFilter page)
         {
             var tranferObject = new TranferObject();
             var pagination = await _service.Search(page);
