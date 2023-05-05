@@ -10,7 +10,7 @@ namespace PROJECT.Service.Interfaces.AD
     {
         public Task<IList<NodeOrganize>> BuildTreeOrganize();
         public Task<IList<NodeOrganize>> Search(string key);
-        public Task<TranferObject> UpdateOrder(string request);
+        public Task UpdateOrder(string request);
         public Task<T_AD_ORGANIZE> GetDetail(string pkid);
         public Task<TranferObject> Update(T_AD_ORGANIZE request);
         public Task<TranferObject> Create(T_AD_ORGANIZE request);

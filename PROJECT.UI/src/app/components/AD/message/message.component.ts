@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { T_AD_MESSAGE } from 'src/app/models/AD/T_AD_MESSAGE.model';
-import { T_AD_MESSAGE_Service } from 'src/app/services/AD/T_AD_MESSAGE.service';
+import { MessageService } from 'src/app/services/AD/message.service';
 import * as jQuery from 'jquery';
 import Swal from 'sweetalert2'
 
@@ -20,6 +20,8 @@ export class MessageComponent implements OnInit {
     PKID: '',
     CODE: '',
     LANGUAGE: '',
+    TYPE:'',
+    MESSAGE_DETAIL:'',
     MESSAGE:'',
     ACTIVE: 'Y',
     CREATE_BY: '',
@@ -33,13 +35,15 @@ export class MessageComponent implements OnInit {
     LANGUAGE: '',
     MESSAGE:'',
     ACTIVE: 'Y',
+    TYPE:'',
+    MESSAGE_DETAIL:'',
     CREATE_BY: '',
     CREATE_DATE: new Date(),
     UPDATE_BY: '',
     UPDATE_DATE: new Date(),
   }
 
-  constructor(private _service: T_AD_MESSAGE_Service, private router: Router, private route: ActivatedRoute) { }
+  constructor(private _service: MessageService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this._service.getListMessage()

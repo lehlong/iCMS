@@ -6,6 +6,7 @@ using System.Text;
 using UAParser;
 using PROJECT.Service.Interfaces.AD;
 using PROJECT.Service.Commons.Authentication;
+using PROJECT.Core.Models.AD;
 
 namespace PROJECT.API.Controllers
 {
@@ -52,20 +53,20 @@ namespace PROJECT.API.Controllers
                 var tokeOptions = new JwtSecurityToken(issuer: ConfigurationManager.AppSetting["JWT:ValidIssuer"], audience: ConfigurationManager.AppSetting["JWT:ValidAudience"], claims, expires: DateTime.Now.AddHours(2), signingCredentials: signinCredentials);
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
 
-                ////Lưu lịch sử đăng nhập
-                //var info = new T_AD_HISTORY_LOGIN()
-                //{
-                //    ID = Guid.NewGuid(),
-                //    USER_NAME = result.USER_NAME,
-                //    FULL_NAME = result.FULL_NAME,
-                //    LOGIN_TIME = DateTime.Now,
-                //    OS = clientInfo.OS.Family + " " + clientInfo.OS.Major,
-                //    BROWSER = clientInfo.UA.Family + " " + clientInfo.UA.Major + "." + clientInfo.UA.Minor,
-                //    IP_ADDRESS = Request.HttpContext.Connection.RemoteIpAddress?.ToString(),
-                //    CONNECTION_ID = Request.HttpContext.Connection.Id.ToString()
-                //};
-                //await _context.T_AD_HISTORY_LOGIN.AddAsync(info);
-                //await _context.SaveChangesAsync();
+                //Lưu lịch sử đăng nhập
+                var info = new T_AD_HISTORY_LOGIN()
+                {
+                    ID = Guid.NewGuid(),
+                    USER_NAME = result.USER_NAME,
+                    FULL_NAME = result.FULL_NAME,
+                    LOGIN_TIME = DateTime.Now,
+                    OS = clientInfo.OS.Family + " " + clientInfo.OS.Major,
+                    BROWSER = clientInfo.UA.Family + " " + clientInfo.UA.Major + "." + clientInfo.UA.Minor,
+                    IP_ADDRESS = Request.HttpContext.Connection.RemoteIpAddress?.ToString(),
+                    CONNECTION_ID = Request.HttpContext.Connection.Id.ToString()
+                };
+                await _service._context.T_AD_HISTORY_LOGIN.AddAsync(info);
+                await _service._context.SaveChangesAsync();
 
                 result.PASSWORD = "";
                 return Ok(new JWTTokenResponse

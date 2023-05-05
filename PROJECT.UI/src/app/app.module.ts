@@ -59,7 +59,7 @@ import { components } from './app.index';
         deps: [ TranslateService, TranslateCacheSettings ]
       },
       cacheName: 'lang', // tên ngôn ngữ được lưu trong cache.
-      cacheMechanism: 'Cookie', // nơi lưu trữ, xoá thuộc tính này thì mặc định là 'LocalStorage'.
+      cacheMechanism: 'LocalStorage', // nơi lưu trữ, xoá thuộc tính này thì mặc định là 'LocalStorage'.
       cookieExpiry: 1, // default value is 720, a month. Set to a negative value and the cookie becomes a session cookie.
       cookieAttributes: 'SameSite=Strict; Secure' // no default, optional specification of additional attributes.
     })

@@ -1,17 +1,24 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PROJECT.Core;
+using PROJECT.Service.Extention;
 
 namespace PROJECT.Service.Commons
 {
     public abstract class GenericService<TEntity, TDto> : IGenericService<TEntity, TDto> where TDto : class where TEntity : class
     {
-        private AppDbContext _context { get; set; }
+        public AppDbContext _context { get; set; }
+        public MessageObject MessageObject { get; set; }
+        public Exception? Exception { get; set; }
+        public bool Status { get; set; }
+
         private IMapper _mapper;
         public GenericService(AppDbContext context, IMapper mapper)
         {
             this._context = context;
             this._mapper = mapper;
+            this.Status = true;
+            this.MessageObject = new MessageObject();
         }
 
         public virtual async Task<IEnumerable<TDto>> GetAll()
@@ -39,6 +46,18 @@ namespace PROJECT.Service.Commons
             var entity = _mapper.Map<TEntity>(dto);
             this._context.Set<TEntity>().Update(entity);
             await this._context.SaveChangesAsync();
+        }
+        public virtual async Task<MessageObject> GetMessage(string code, string lang)
+        {
+            var mess = await _context.T_AD_MESSAGE.FirstOrDefaultAsync(x => x.CODE == code && x.LANGUAGE == lang);
+            var messageObject = new MessageObject()
+            {
+                Code = mess.CODE,
+                Message = mess.MESSAGE,
+                MessageDetail = mess.MESSAGE_DETAIL,
+                MessageType = mess.TYPE
+            };
+            return messageObject;
         }
     }
 }

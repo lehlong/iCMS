@@ -13,8 +13,8 @@
       <!-- Chuyển đổi ngôn ngữ -->
       <li class="nav-item dropdown">
         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-          <img *ngIf="this.cookie.get('lang') == 'vi'" src="../assets/img/vi.png" style="float: right;width: 6%;">
-          <img *ngIf="this.cookie.get('lang') == 'en'" src="../assets/img/en.png" style="float: right;width: 6%;">
+          <img *ngIf="lang == 'vi'" src="../assets/img/vi.png" style="float: right;width: 6%;">
+          <img *ngIf="lang == 'en'" src="../assets/img/en.png" style="float: right;width: 6%;">
         </a>
         <ul class="dropdown-menu dropdown-menu-end notifications" style="width: 6%;">
 
@@ -268,7 +268,7 @@
           </a>
         </li>
         <li>
-          <a routerLink="Message">
+          <a routerLink="SystemManage/Message">
             <i class="bi bi-circle"></i><span>{{'MNU_NOTIFICATION' | translate }}</span>
           </a>
         </li>

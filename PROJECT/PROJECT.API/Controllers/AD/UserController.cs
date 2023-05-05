@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PROJECT.Service.Extention;
 using PROJECT.Service.Interfaces.AD;
 
 namespace PROJECT.API.Controllers.MD
@@ -19,7 +20,13 @@ namespace PROJECT.API.Controllers.MD
         [Route("GetList")]
         public async Task<IActionResult> GetList()
         {
-            return Ok(await _service.GetAll());
+            var tranferObject = new TranferObject();
+            var data = await _service.GetAll();
+            if (_service.Status)
+            {
+                tranferObject.Data = data;
+            }
+            return Ok(tranferObject);
         }
 
         [HttpGet]

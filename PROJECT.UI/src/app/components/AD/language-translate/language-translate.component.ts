@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { T_AD_LANGUAGE_TRANSLATE } from 'src/app/models/AD/T_AD_LANGUAGE_TRANSLATE.model';
-import { T_AD_LANGUAGE_TRANSLATE_Service } from 'src/app/services/AD/T_AD_LANGUAGE_TRANSLATE.service';
+import { LanguageService } from 'src/app/services/AD/language.service';
 import * as jQuery from 'jquery';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -39,7 +39,7 @@ export class LanguageTranslateComponent implements OnInit {
     UPDATE_DATE: new Date(),
   }
 
-  constructor(private _service: T_AD_LANGUAGE_TRANSLATE_Service, private router: Router, private route: ActivatedRoute, public translate: TranslateService) { }
+  constructor(private _service: LanguageService, private router: Router, private route: ActivatedRoute, public translate: TranslateService) { }
 
   ngOnInit(): void {
     this._service.getListLanguageTranslate()

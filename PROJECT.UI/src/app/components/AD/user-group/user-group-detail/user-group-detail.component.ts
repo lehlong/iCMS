@@ -5,7 +5,7 @@ import { T_AD_USER } from 'src/app/models/AD/T_AD_USER.model';
 import { T_AD_USER_GROUP } from 'src/app/models/AD/T_AD_USER_GROUP.model';
 import { T_AD_USER_GROUP_ROLE } from 'src/app/models/AD/T_AD_USER_GROUP_ROLE.model';
 import { T_AD_USER_USER_GROUP } from 'src/app/models/AD/T_AD_USER_USER_GROUP.model';
-import { T_AD_USER_Service } from 'src/app/services/AD/T_AD_USER.service';
+import { UserService } from 'src/app/services/AD/user.service';
 import { T_AD_USER_GROUP_Service } from 'src/app/services/AD/T_AD_USER_GROUP.service';
 import { T_AD_USER_GROUP_ROLE_Service } from 'src/app/services/AD/T_AD_USER_GROUP_ROLE.service';
 import { T_AD_USER_USER_GROUP_Service } from 'src/app/services/AD/T_AD_USER_USER_GROUP.service';
@@ -43,7 +43,7 @@ export class UserGroupDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private _service: T_AD_USER_GROUP_Service,
     private _serviceUserGroupRole: T_AD_USER_GROUP_ROLE_Service,
     private _serviceUserUserGroup: T_AD_USER_USER_GROUP_Service,
-    private _serviceUser: T_AD_USER_Service) { }
+    private _serviceUser: UserService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe({

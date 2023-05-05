@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { T_AD_LANGUAGE_TRANSLATE } from 'src/app/models/AD/T_AD_LANGUAGE_TRANSLATE.model';
 import { TranferObject } from 'src/app/models/Common/tranfer-object.model';
-import { T_AD_LANGUAGE_TRANSLATE_Service } from 'src/app/services/AD/T_AD_LANGUAGE_TRANSLATE.service';
+import { LanguageService } from 'src/app/services/AD/language.service';
 declare function Message(response: TranferObject): any
 declare function ShowLoading(): any
 declare function HideLoading(): any
@@ -12,7 +12,7 @@ declare function HideLoading(): any
   templateUrl: './language-edit.component.html',
 })
 export class LanguageEditComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private router: Router, private _service: T_AD_LANGUAGE_TRANSLATE_Service) { }
+  constructor(private route: ActivatedRoute, private router: Router, private _service: LanguageService) { }
   itemDetail: T_AD_LANGUAGE_TRANSLATE = {
     ID: '00000000-0000-0000-0000-000000000000',
     KEY: '',

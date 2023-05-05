@@ -4,8 +4,8 @@ import { T_AD_ORGANIZE } from 'src/app/models/AD/T_AD_ORGANIZE.model';
 import { T_AD_USER } from 'src/app/models/AD/T_AD_USER.model';
 import { T_AD_USER_GROUP } from 'src/app/models/AD/T_AD_USER_GROUP.model';
 import { Select } from 'src/app/models/Common/select.model';
-import { T_AD_ORGANIZE_Service } from 'src/app/services/AD/T_AD_ORGANIZE.service';
-import { T_AD_USER_Service } from 'src/app/services/AD/T_AD_USER.service';
+import { OrganizeService } from 'src/app/services/AD/organize.service';
+import { UserService } from 'src/app/services/AD/user.service';
 import { T_AD_USER_GROUP_Service } from 'src/app/services/AD/T_AD_USER_GROUP.service';
 import { T_AD_USER_USER_GROUP_Service } from 'src/app/services/AD/T_AD_USER_USER_GROUP.service';
 import { T_MD_TITLE_Service } from 'src/app/services/MD/T_MD_TITLE.service';
@@ -60,9 +60,9 @@ export class UserDetailComponent implements OnInit {
 
   organizeId: string = '';
 
-  constructor(private route: ActivatedRoute, private _service: T_AD_USER_Service,
+  constructor(private route: ActivatedRoute, private _service: UserService,
     private _serviceTitle: T_MD_TITLE_Service, private _serviceVendor: T_MD_VENDOR_Service,
-    private _serviceOrganize: T_AD_ORGANIZE_Service, private _serviceUserUserGroup : T_AD_USER_USER_GROUP_Service,
+    private _serviceOrganize: OrganizeService, private _serviceUserUserGroup : T_AD_USER_USER_GROUP_Service,
     private _serviceUserGroup : T_AD_USER_GROUP_Service) { }
   ngOnInit(): void {
     this.route.paramMap.subscribe({

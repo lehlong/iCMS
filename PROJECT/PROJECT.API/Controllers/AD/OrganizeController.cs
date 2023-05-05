@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
 using PROJECT.Core.Models.AD;
+using PROJECT.Service.Extention;
 using PROJECT.Service.Interfaces.AD;
+using System.Net;
 
 namespace PROJECT.API.Controllers.MD
 {
@@ -19,8 +22,14 @@ namespace PROJECT.API.Controllers.MD
         [HttpGet]
         [Route("BuildTree")]
         public async Task<IActionResult> BuildTree()
-        {        
-            return Ok(await _service.BuildTreeOrganize());
+        {
+            var tranferObject = new TranferObject();
+            var result = await _service.BuildTreeOrganize();
+            if (_service.Status)
+            {
+                tranferObject.Data = result;
+            }
+            return Ok(tranferObject);
         }
 
         [HttpGet]
@@ -41,21 +50,39 @@ namespace PROJECT.API.Controllers.MD
         [Route("UpdateOrder/{request}")]
         public async Task<IActionResult> updateOrder([FromRoute] string request)
         {
-            return Ok(await _service.UpdateOrder(request));
+            var tranferObject = new TranferObject();
+            await _service.UpdateOrder(request);
+            if (_service.Status)
+            {
+                tranferObject.Message = await _service.GetMessage("S1000", Request.Headers["Language"]);
+            } 
+            return Ok(tranferObject);
         }
 
         [HttpPut]
         [Route("Update")]
         public async Task<IActionResult> UpdateItem([FromBody] T_AD_ORGANIZE request)
         {
-            return Ok(await _service.Update(request));
+            var tranferObject = new TranferObject();
+            await _service.Update(request);
+            if (_service.Status)
+            {
+                tranferObject.Message = await _service.GetMessage("S1000", Request.Headers["Language"]);
+            }
+            return Ok(tranferObject);
         }
 
         [HttpPost]
         [Route("Create")]
         public async Task<IActionResult> Create([FromBody] T_AD_ORGANIZE request)
         {
-            return Ok(await _service.Create(request));
+            var tranferObject = new TranferObject();
+            await _service.Create(request);
+            if (_service.Status)
+            {
+                tranferObject.Message = await _service.GetMessage("S1000", Request.Headers["Language"]);
+            }
+            return Ok(tranferObject);
         }
     }
 }

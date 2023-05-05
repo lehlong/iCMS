@@ -8,7 +8,7 @@ import { TranferObject } from 'src/app/models/Common/tranfer-object.model';
 @Injectable({
   providedIn: 'root'
 })
-export class T_AD_LANGUAGE_TRANSLATE_Service {
+export class LanguageService {
 
   token = localStorage.getItem('jwt');
   headers = new HttpHeaders({

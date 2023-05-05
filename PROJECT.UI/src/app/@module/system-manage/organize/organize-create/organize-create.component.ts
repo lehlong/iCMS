@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { T_AD_ORGANIZE } from 'src/app/models/AD/T_AD_ORGANIZE.model';
 import { TranferObject } from 'src/app/models/Common/tranfer-object.model';
-import { T_AD_ORGANIZE_Service } from 'src/app/services/AD/T_AD_ORGANIZE.service';
+import { OrganizeService } from 'src/app/services/AD/organize.service';
 declare function Message(response: TranferObject): any
 declare function ShowLoading(): any
 declare function HideLoading(): any
@@ -12,7 +12,7 @@ declare function HideLoading(): any
   templateUrl: './organize-create.component.html'
 })
 export class OrganizeCreateComponent {
-  constructor(private route: ActivatedRoute, private router: Router, private _service: T_AD_ORGANIZE_Service){}
+  constructor(private route: ActivatedRoute, private router: Router, private _service: OrganizeService){}
   itemCreate: T_AD_ORGANIZE = {
     PKID: '',
     COMPANY_CODE: '',

@@ -8,19 +8,19 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\CM\**" />
-    <Compile Remove="Controllers\MD\**" />
+    <Compile Remove="Controllers\CM\MD\**" />
     <Compile Remove="Models\**" />
     <Compile Remove="Service\**" />
     <Content Remove="Controllers\CM\**" />
-    <Content Remove="Controllers\MD\**" />
+    <Content Remove="Controllers\CM\MD\**" />
     <Content Remove="Models\**" />
     <Content Remove="Service\**" />
     <EmbeddedResource Remove="Controllers\CM\**" />
-    <EmbeddedResource Remove="Controllers\MD\**" />
+    <EmbeddedResource Remove="Controllers\CM\MD\**" />
     <EmbeddedResource Remove="Models\**" />
     <EmbeddedResource Remove="Service\**" />
     <None Remove="Controllers\CM\**" />
-    <None Remove="Controllers\MD\**" />
+    <None Remove="Controllers\CM\MD\**" />
     <None Remove="Models\**" />
     <None Remove="Service\**" />
   </ItemGroup>
@@ -29,7 +29,6 @@
     <Compile Remove="Controllers\AD\ConfigTextElementController.cs" />
     <Compile Remove="Controllers\AD\HistoryController.cs" />
     <Compile Remove="Controllers\AD\HistoryLoginController.cs" />
-    <Compile Remove="Controllers\AD\MessageController.cs" />
     <Compile Remove="Controllers\AD\RightController.cs" />
     <Compile Remove="Controllers\AD\RoleController.cs" />
     <Compile Remove="Controllers\AD\UserGroupController.cs" />
@@ -39,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Controllers\MD\UnitController.cs" />
+    <Compile Include="Controllers\CM\MD\UnitController.cs" />
   </ItemGroup>
 
   <ItemGroup>

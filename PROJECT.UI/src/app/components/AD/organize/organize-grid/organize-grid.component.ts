@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NodeOrganize, T_AD_ORGANIZE } from 'src/app/models/AD/T_AD_ORGANIZE.model';
-import { T_AD_ORGANIZE_Service } from 'src/app/services/AD/T_AD_ORGANIZE.service';
+import { OrganizeService } from 'src/app/services/AD/organize.service';
 import { AppComponent } from 'src/app/app.component';
 import { environment } from 'src/environments/environment';
 
@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class OrganizeGridComponent implements OnInit {
 
-  constructor(public _service: T_AD_ORGANIZE_Service, private router: Router, private route: ActivatedRoute, public _app: AppComponent) { }
+  constructor(public _service: OrganizeService, private router: Router, private route: ActivatedRoute, public _app: AppComponent) { }
 
   dataTree: NodeOrganize[] = [];
   dataTable: T_AD_ORGANIZE[] = [];

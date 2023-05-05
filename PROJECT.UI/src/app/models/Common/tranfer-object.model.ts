@@ -1,6 +1,6 @@
 export interface TranferObject {
    Status: boolean,
-   Data: object,
+   Data: any,
    Message: MessageObject
 }
 

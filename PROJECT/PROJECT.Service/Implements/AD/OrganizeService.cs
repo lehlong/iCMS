@@ -55,7 +55,7 @@ namespace PROJECT.Service.Implements.AD
 
             return lstNode;
         }
-        public async Task<TranferObject> UpdateOrder(string request)
+        public async Task UpdateOrder(string request)
         {
             try
             {
@@ -73,31 +73,12 @@ namespace PROJECT.Service.Implements.AD
                         item.C_ORDER = i;
                     }
                 }
-                await _context.SaveChangesAsync();
-
-                return new TranferObject
-                {
-                    Status = true,
-                    Message = new MessageObject
-                    {
-                        Message = "Thành công!",
-                        MessageDetail = "Cập nhật thứ tự cấu trúc tổ chức thành công!",
-                        MessageType = "S",
-                    }
-                };
+                await _context.SaveChangesAsync();               
             }
             catch(Exception ex)
             {
-                return new TranferObject
-                {
-                    Status = true,
-                    Message = new MessageObject
-                    {
-                        Message = "Thất bại!",
-                        MessageDetail = "Đã có lỗi xảy ra: " + ex.ToString(),
-                        MessageType = "E",
-                    }
-                };
+               this.Exception = ex;
+               this.Status = false;
             }
 
         }

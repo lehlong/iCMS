@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NodeOrganize, T_AD_ORGANIZE } from 'src/app/models/AD/T_AD_ORGANIZE.model';
-import { T_AD_ORGANIZE_Service } from 'src/app/services/AD/T_AD_ORGANIZE.service';
+import { OrganizeService } from 'src/app/services/AD/organize.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 declare function MessageSuccess(response: string): any
@@ -16,7 +16,7 @@ declare function HideLoading() :any
 })
 export class OrganizeComponent implements OnInit {
 
-  constructor(public _service: T_AD_ORGANIZE_Service, private router: Router, private route: ActivatedRoute) { }
+  constructor(public _service: OrganizeService, private router: Router, private route: ActivatedRoute) { }
 
   dataTree: NodeOrganize[] = [];
 

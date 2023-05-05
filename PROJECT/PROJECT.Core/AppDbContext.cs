@@ -47,11 +47,17 @@ namespace PROJECT.Core
 
         private void TrackChanges()
         {
-            var token = HttpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Split(" ")[1];
-            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
-            JwtSecurityToken securityToken = (JwtSecurityToken)tokenHandler.ReadToken(token);
-            var claim = securityToken.Claims;
-            var user = claim.FirstOrDefault(x => x.Type == "username");
+            var token = HttpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Split(" ").ToList();
+            var user = "";
+            if (token.Count > 1)
+            {
+                JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+                JwtSecurityToken securityToken = (JwtSecurityToken)tokenHandler.ReadToken(token[1]);
+                var claim = securityToken.Claims;
+                var result = claim.FirstOrDefault(x => x.Type == "username");
+                user = result?.Value;
+            }
+
 
             foreach (var entry in this.ChangeTracker.Entries().Where(e => e.State == EntityState.Added || e.State == EntityState.Modified))
             {
@@ -60,12 +66,12 @@ namespace PROJECT.Core
                     var auditable = entry.Entity as IBaseEntity;
                     if (entry.State == EntityState.Added)
                     {
-                        auditable.CREATE_BY = user?.Value;  
+                        auditable.CREATE_BY = user;  
                         auditable.CREATE_DATE = TimestampProvider();
                     }
                     else
                     {
-                        auditable.UPDATE_BY = user?.Value;
+                        auditable.UPDATE_BY = user;
                         auditable.UPDATE_DATE = TimestampProvider();
                     }
                 }
@@ -73,6 +79,7 @@ namespace PROJECT.Core
         }
 
         #region System Manage
+        public DbSet<T_AD_HISTORY_LOGIN> T_AD_HISTORY_LOGIN { get; set; }
         public DbSet<T_AD_USER> T_AD_USER { get; set; }
         public DbSet<T_AD_LANGUAGE_TRANSLATE> T_AD_LANGUAGE_TRANSLATE { get; set; }
         public DbSet<T_AD_RIGHT> T_AD_RIGHT{ get; set; }
@@ -83,7 +90,7 @@ namespace PROJECT.Core
         public DbSet<T_AD_USER_RIGHT> T_AD_USER_RIGHT { get; set; }
         public DbSet<T_AD_USER_USER_GROUP> T_AD_USER_USER_GROUP { get; set; }
         public DbSet<T_AD_ORGANIZE> T_AD_ORGANIZE { get; set; }
-
+        public DbSet<T_AD_MESSAGE> T_AD_MESSAGE { get; set; }
 
         #endregion
 

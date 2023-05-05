@@ -6,24 +6,27 @@ import { T_AD_USER } from 'src/app/models/AD/T_AD_USER.model';
 import { NodeRight } from 'src/app/models/AD/T_AD_RIGHT_model';
 import { T_AD_USER_RIGHT } from 'src/app/models/AD/T_AD_USER_RIGHT.model';
 import { T_AD_USER_USER_GROUP } from 'src/app/models/AD/T_AD_USER_USER_GROUP.model';
+import { CookieService } from 'ngx-cookie-service';
+import { CommonService } from '../Common/common.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class T_AD_USER_Service {
+export class UserService {
+
+  constructor(private http: HttpClient, private cookie: CookieService, private _common : CommonService) { }
 
   token = localStorage.getItem('jwt');
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${this.token}`
+    'Authorization': `Bearer ${this.token}`,
+    'Language' : this.cookie.get('lang')
   });
   requestOptions = { headers: this.headers };
-
   apiUrl: string = environment.baseApiUrl;
-  constructor(private http: HttpClient) { }
 
-  getListUser(): Observable<T_AD_USER[]> {
-    return this.http.get<T_AD_USER[]>(this.apiUrl + '/api/User/GetList', this.requestOptions)
+  getListUser(){
+    return this._common.getRequest('/api/User/GetList')
   }
 
   searchUser(key:string): Observable<T_AD_USER[]> {

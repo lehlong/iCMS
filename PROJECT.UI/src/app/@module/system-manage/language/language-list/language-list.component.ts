@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { T_AD_LANGUAGE_TRANSLATE } from 'src/app/models/AD/T_AD_LANGUAGE_TRANSLATE.model';
-import { T_AD_LANGUAGE_TRANSLATE_Service } from 'src/app/services/AD/T_AD_LANGUAGE_TRANSLATE.service';
+import { LanguageService } from 'src/app/services/AD/language.service';
 declare function ShowLoading(): any
 declare function HideLoading(): any
 
@@ -11,7 +11,7 @@ declare function HideLoading(): any
 })
 export class LanguageListComponent implements OnInit {
   lstLanguageTranslate: T_AD_LANGUAGE_TRANSLATE[] = [];
-  constructor(private _service: T_AD_LANGUAGE_TRANSLATE_Service, public translate: TranslateService) { }
+  constructor(private _service: LanguageService, public translate: TranslateService) { }
   ngOnInit(): void {
     ShowLoading()
     this._service.getListLanguageTranslate()

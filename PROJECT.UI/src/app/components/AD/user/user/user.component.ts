@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { T_AD_USER } from 'src/app/models/AD/T_AD_USER.model';
-import { T_AD_USER_Service } from 'src/app/services/AD/T_AD_USER.service';
+import { UserService } from 'src/app/services/AD/user.service';
 import { AppComponent } from 'src/app/app.component';
 import * as jQuery from 'jquery';
 import { Select } from 'src/app/models/Common/select.model';
-import { T_AD_ORGANIZE_Service } from 'src/app/services/AD/T_AD_ORGANIZE.service';
+import { OrganizeService } from 'src/app/services/AD/organize.service';
 import { T_MD_TITLE_Service } from 'src/app/services/MD/T_MD_TITLE.service';
 import { T_MD_VENDOR_Service } from 'src/app/services/MD/T_MD_VENDOR.service';
 
@@ -21,9 +21,9 @@ declare function HideLoading(): any
 })
 export class UserComponent implements OnInit {
 
-  constructor(public _serviceUser: T_AD_USER_Service, public _app: AppComponent,
+  constructor(public _serviceUser: UserService, public _app: AppComponent,
     private _serviceTitle: T_MD_TITLE_Service, private _serviceVendor: T_MD_VENDOR_Service,
-    private _serviceOrganize: T_AD_ORGANIZE_Service) { }
+    private _serviceOrganize: OrganizeService) { }
 
   dataUser: T_AD_USER[] = [];
   dataUserSearch: T_AD_USER[] = [];
@@ -75,8 +75,8 @@ export class UserComponent implements OnInit {
     this._serviceUser.getListUser()
       .subscribe({
         next: (response) => {
-          this.dataUser = response;
-          this.dataUserSearch = response;
+          //this.dataUser = response;
+          //this.dataUserSearch = response;
           HideLoading();
         },
         error: (response) => {

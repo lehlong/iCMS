@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
 
   dataUser = JSON.parse(localStorage.getItem('user') || '{}');
   lstRight = JSON.parse(localStorage.getItem('lstRight') || '{}') 
+  lang = localStorage.getItem('lang');
   token = localStorage.getItem("jwt");
   constructor(public translate: TranslateService, translateCache: TranslateCacheService,public cookie: CookieService, private router: Router,private jwtHelper : JwtHelperService ){
     translate.addLangs(['vi', 'en']);
@@ -91,6 +92,7 @@ export class AppComponent implements OnInit {
 
   switchLang(lang: string) {
     this.translate.use(lang);
+    this.lang = localStorage.getItem('lang');
   }
 
   isUserAuthenticated() {

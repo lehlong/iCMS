@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NodeOrganize } from 'src/app/models/AD/T_AD_ORGANIZE.model';
-import { T_AD_ORGANIZE_Service } from 'src/app/services/AD/T_AD_ORGANIZE.service';
+import { OrganizeService } from 'src/app/services/AD/organize.service';
 import { environment } from 'src/environments/environment';
 declare function Message(response: any): any
 declare function ShowLoading(): any
@@ -12,7 +12,7 @@ declare function HideLoading(): any
   templateUrl: './organize-list.component.html',
 })
 export class OrganizeListComponent implements OnInit {
-  constructor(public _service: T_AD_ORGANIZE_Service, private router: Router, private route: ActivatedRoute) { }
+  constructor(public _service: OrganizeService, private router: Router, private route: ActivatedRoute) { }
 
   dataTree: NodeOrganize[] = [];
 
@@ -20,7 +20,7 @@ export class OrganizeListComponent implements OnInit {
     ShowLoading()
     this._service.buildTreeOrganize()
       .subscribe({
-        next: (response) => { buildTree(response); HideLoading(); },
+        next: (response) => { buildTree(response.Data); HideLoading(); },
         error: (response) => { console.log(response); HideLoading(); }
       });
   }
@@ -91,7 +91,8 @@ function updateOrderTree() {
     type: 'PUT',
     dataType: "json",
     headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('jwt')
+      Authorization: 'Bearer ' + localStorage.getItem('jwt'),
+      Language: localStorage.getItem('lang')
     },
     url: `${environment.baseApiUrl}/api/Organize/UpdateOrder/${JSON.stringify(data)}`,
     success: function (response) {

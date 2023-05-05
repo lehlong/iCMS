@@ -7,7 +7,7 @@ import { T_AD_MESSAGE } from 'src/app/models/AD/T_AD_MESSAGE.model';
 @Injectable({
   providedIn: 'root'
 })
-export class T_AD_MESSAGE_Service {
+export class MessageService {
 
   token = localStorage.getItem('jwt');
   headers = new HttpHeaders({
