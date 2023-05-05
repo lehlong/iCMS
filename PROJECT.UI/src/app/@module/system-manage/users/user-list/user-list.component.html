@@ -49,7 +49,7 @@
                 </tbody>
             </table>
             <div style="float: right;">
-                <ngb-pagination [pageSize]="pagination.PageSize" [collectionSize]="pagination.ItemCount" [(page)]="pagination.CurrentPage" [maxSize]="5" (pageChange)="onChangePage($event)"
+                <ngb-pagination [pageSize]="filter.PageSize" [collectionSize]="filter.ItemCount" [(page)]="filter.CurrentPage" [maxSize]="5" (pageChange)="onChangePage($event)"
                     aria-label="User pagination" class="pagination"></ngb-pagination>
             </div>
         </div>
