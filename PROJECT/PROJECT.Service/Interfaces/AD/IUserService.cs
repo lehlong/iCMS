@@ -2,6 +2,7 @@
 using PROJECT.Service.Commons;
 using PROJECT.Service.Commons.Authentication;
 using PROJECT.Service.Dtos.AD;
+using PROJECT.Service.Extention;
 
 namespace PROJECT.Service.Interfaces.AD
 {
@@ -10,6 +11,6 @@ namespace PROJECT.Service.Interfaces.AD
         public string EncryptStringMD5(string strSource);
         public Task<T_AD_USER> CheckUserAuthentication(Login user);
         public Task<List<string>> GetRightUserAuthentication(Login user);
-        public Task<IEnumerable<T_AD_USER>> Search(string key);
+        public Task<PaginationModel> Search(PaginationModel page);
     }
 }

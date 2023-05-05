@@ -9,7 +9,7 @@
             <div class="p-2">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="bi bi-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Tìm kiếm" (keyup)="searchUser($event)">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm" (keydown.enter)="searchUser($event)">
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of listUser | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                    <tr *ngFor="let item of listUser">
                         <td><img src="../../../../../assets/img/UserLogo.jpg" style="width: 100%;border-radius: 50%;">
                         </td>
                         <td [routerLink]="['/User','UserDetail', item.USER_NAME]">{{item.USER_NAME}}</td>
@@ -49,7 +49,7 @@
                 </tbody>
             </table>
             <div style="float: right;">
-                <ngb-pagination [pageSize]="pageSize" [collectionSize]="listUser.length" [(page)]="page" [maxSize]="5"
+                <ngb-pagination [pageSize]="pagination.PageSize" [collectionSize]="pagination.ItemCount" [(page)]="pagination.CurrentPage" [maxSize]="5" (pageChange)="onChangePage($event)"
                     aria-label="User pagination" class="pagination"></ngb-pagination>
             </div>
         </div>

@@ -9,7 +9,7 @@ namespace PROJECT.Service.Commons
         public MessageObject MessageObject { get; set; }
         public Exception? Exception { get; set; }
         public bool Status { get; set; }
-        Task<IEnumerable<TDto>> GetAll();
+        Task<IList<TDto>> GetAll();
         Task<TDto> Add(TDto dto);
         Task Update(TDto dto);
         Task Delete(TDto dto);

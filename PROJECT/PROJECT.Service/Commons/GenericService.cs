@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.EntityFrameworkCore;
 using PROJECT.Core;
 using PROJECT.Service.Extention;
@@ -21,7 +23,7 @@ namespace PROJECT.Service.Commons
             this.MessageObject = new MessageObject();
         }
 
-        public virtual async Task<IEnumerable<TDto>> GetAll()
+        public virtual async Task<IList<TDto>> GetAll()
         {
             var lstEntity = await this._context.Set<TEntity>().ToListAsync();
             return _mapper.Map<List<TDto>>(lstEntity);

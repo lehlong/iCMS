@@ -5,6 +5,7 @@ using PROJECT.Core.Models.AD;
 using PROJECT.Service.Commons;
 using PROJECT.Service.Commons.Authentication;
 using PROJECT.Service.Dtos.AD;
+using PROJECT.Service.Extention;
 using PROJECT.Service.Interfaces.AD;
 using XSystem.Security.Cryptography;
 
@@ -104,16 +105,18 @@ namespace PROJECT.Service.Implements.AD
             return lstRole;
         }
 
-        public async Task<IEnumerable<T_AD_USER>> Search(string key)
+        public async Task<PaginationModel> Search(PaginationModel page)
         {
-            if(key == "Empty")
+            var result = page.KeySearch == "Empty" ? await _context.T_AD_USER.ToListAsync() : await _context.T_AD_USER.Where(x => x.USER_NAME.Contains(page.KeySearch) || x.FULL_NAME.Contains(page.KeySearch)).ToListAsync();
+            return new PaginationModel
             {
-                return await _context.T_AD_USER.ToListAsync();
-            }
-            else
-            {
-                return await _context.T_AD_USER.Where(x => x.USER_NAME.Contains(key) || x.FULL_NAME.Contains(key)).ToListAsync();
-            }
+                CurrentPage = page.CurrentPage,
+                ItemCount = result.Count(),
+                PageSize = page.PageSize,
+                KeySearch = page.KeySearch,
+                TotalPage = (int)Math.Ceiling(result.Count() / (decimal)page.PageSize),
+                Data = result.Skip((page.CurrentPage - 1) * page.PageSize).Take(page.PageSize).ToList(),
+            };
         }
     }
 }

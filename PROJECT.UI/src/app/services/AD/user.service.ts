@@ -8,6 +8,7 @@ import { T_AD_USER_RIGHT } from 'src/app/models/AD/T_AD_USER_RIGHT.model';
 import { T_AD_USER_USER_GROUP } from 'src/app/models/AD/T_AD_USER_USER_GROUP.model';
 import { CookieService } from 'ngx-cookie-service';
 import { CommonService } from '../Common/common.service';
+import { Pagination } from 'src/app/models/Common/pagination.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,9 @@ export class UserService {
   requestOptions = { headers: this.headers };
   apiUrl: string = environment.baseApiUrl;
 
-  getListUser(){
-    return this._common.getRequest('/api/User/GetList')
+  getListUser(pagination? : Pagination){
+    var url = `/api/User/GetList?CurrentPage=${pagination?.CurrentPage}&PageSize=${pagination?.PageSize}&KeySearch=${pagination?.KeySearch}`
+    return this._common.getRequest(url)
   }
 
   searchUser(key:string): Observable<T_AD_USER[]> {

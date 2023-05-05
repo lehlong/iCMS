@@ -18,25 +18,16 @@ namespace PROJECT.API.Controllers.MD
 
         [HttpGet]
         [Route("GetList")]
-        public async Task<IActionResult> GetList()
+        public async Task<IActionResult> GetList([FromQuery] PaginationModel page)
         {
             var tranferObject = new TranferObject();
-            var data = await _service.GetAll();
+            var pagination = await _service.Search(page);
             if (_service.Status)
             {
-                tranferObject.Data = data;
+                tranferObject.Data = pagination;
             }
             return Ok(tranferObject);
         }
-
-        [HttpGet]
-        [Route("Search/{key}")]
-        public async Task<IActionResult> Search([FromRoute] string key)
-        {
-            return Ok(await _service.Search(key));
-        }
-
-
 
         //[HttpGet]
         //[Route("GetDetail/{username}")]
