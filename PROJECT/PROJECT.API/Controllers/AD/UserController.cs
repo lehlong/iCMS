@@ -18,6 +18,7 @@ namespace PROJECT.API.Controllers.MD
         }
 
         [HttpGet]
+        [Authorize(Roles = "R123")]
         [Route("GetList")]
         public async Task<IActionResult> GetList([FromQuery] UserFilter page)
         {

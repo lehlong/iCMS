@@ -7,6 +7,7 @@ using UAParser;
 using PROJECT.Service.Interfaces.AD;
 using PROJECT.Service.Commons.Authentication;
 using PROJECT.Core.Models.AD;
+using XAct;
 
 namespace PROJECT.API.Controllers
 {
@@ -33,22 +34,28 @@ namespace PROJECT.API.Controllers
             }
 
             var result = await _service.CheckUserAuthentication(user);
-            
+
             if (result != null)
             {
                 //Lấy các role quyền
                 var lstRole = await _service.GetRightUserAuthentication(user);
-                
+
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(ConfigurationManager.AppSetting["JWT:Secret"]));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
-                var claims = new[] {
-                new Claim("username", user.UserName.ToString()),
-                    new Claim(JwtRegisteredClaimNames.Name, user.UserName),
-                    new Claim(JwtRegisteredClaimNames.Email, ""),
-                    new Claim("Role", string.Join("", lstRole)),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-                };
+                var claims = new List<Claim>();
+                claims.Add(new Claim("username", user.UserName.ToString()));
+                claims.Add(new Claim(JwtRegisteredClaimNames.Name, user.UserName));
+                claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+                //var claims = new[] {
+                //    new Claim("username", user.UserName.ToString()),
+                //    new Claim(JwtRegisteredClaimNames.Name, user.UserName),
+                //    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                //};
+                foreach (var role in lstRole)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, role.ToString()));
+                }
 
                 var tokeOptions = new JwtSecurityToken(issuer: ConfigurationManager.AppSetting["JWT:ValidIssuer"], audience: ConfigurationManager.AppSetting["JWT:ValidAudience"], claims, expires: DateTime.Now.AddHours(2), signingCredentials: signinCredentials);
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);

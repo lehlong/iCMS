@@ -22,6 +22,16 @@ function Message(response) {
   }
 }
 
+function MessageDanger(response){
+  $("#alert-message").empty();
+    $("#alert-message").append(`<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <h4 class="alert-heading"><i class="bi bi-exclamation-octagon me-1"></i> Oppsss!</h4>
+  <p>Bạn không có quyền vào chức năng này!<br> ${response.message}</p>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>`).fadeIn();
+}
+
+
 function ShowLoading() {
   $("#overlay.div-loading").fadeIn();
 }

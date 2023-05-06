@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserFilter } from 'src/app/@filter/AD/user-filter.model';
 import { T_AD_USER } from 'src/app/models/AD/T_AD_USER.model';
 import { UserService } from 'src/app/services/AD/user.service';
+declare function MessageDanger(response :any) :any
 
 @Component({
   selector: 'app-user-list',
@@ -27,7 +28,7 @@ export class UserListComponent implements OnInit {
           this.listUser = response.Data.Data;
           this.filter = response.Data;
         },
-        error: (response) => { console.log(response); }
+        error: (response) => { MessageDanger(response); console.log(response) }
       });
   }
 
